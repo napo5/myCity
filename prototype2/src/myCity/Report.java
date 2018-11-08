@@ -1,6 +1,7 @@
 package myCity;
 
-import java.util.Vector;
+import java.util.ArrayList;
+
 
 public class Report {
 	
@@ -9,7 +10,7 @@ public class Report {
 	private int reportID;
 	
 	private String description;
-	private Vector<Comment> comments;
+	private ArrayList<Comment> comments;
 	private ReportState state;
 	private User author;
 	
@@ -17,7 +18,7 @@ public class Report {
 	
 	
 	
-	public Report(String description, Vector<Comment> comments, ReportState state, User author) {
+	public Report(String description, ArrayList<Comment> comments, ReportState state, User author) {
 		super();
 		this.description = description;
 		this.comments = comments;
@@ -29,7 +30,7 @@ public class Report {
 
 
 	void addComment(Comment comment) {
-		comments.addElement(comment);
+		comments.add(comment);
 	}
 
 	
@@ -54,12 +55,7 @@ public class Report {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Vector<Comment> getComments() {
-		return comments;
-	}
-	public void setComments(Vector<Comment> comments) {
-		this.comments = comments;
-	}
+	
 	public ReportState getState() {
 		return state;
 	}

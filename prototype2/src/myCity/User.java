@@ -4,30 +4,37 @@ import java.util.Date;
 
 public class User {
 	
+		private static int count = 0;
+		private int userID;
+	
 	
 	
 	public User(int iD, String name, String surname, String city, Date birthday, String email) {
-		super();
-		ID = iD;
+		
+		
 		this.name = name;
 		this.surname = surname;
 		this.city = city;
 		this.birthday = birthday;
 		this.email = email;
+		setUserID(++count);
 	}
-	private int ID;
+	
 	private String name;
 	private String surname;
 	private String city;
 	private Date birthday;
 	private String email;
 	
-	public int getID() {
-		return ID;
+	
+	public int getUserID() {
+		return userID;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
+	
+
 	public String getName() {
 		return name;
 	}

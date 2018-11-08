@@ -1,7 +1,8 @@
 package myCity;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Vector;
+
 
 public class Main {
 
@@ -18,15 +19,15 @@ public class Main {
 		Recanati.addCitizen(Luca);
 		
 		
-		Vector<Comment> toccacrearlo = new Vector<Comment>();
+		ArrayList<Comment> toccacrearlo = new ArrayList<Comment>();
 		
-		Report reportDiLuca = new Report("Reca fa schifo!", toccacrearlo ,ReportState.REGULAR, Luca);
-		Report secondoreportDiLuca = new Report("anche porto fa schifo!", toccacrearlo ,ReportState.REGULAR, Luca);
+		Report reportDiLuca = new Report("La biblioteca non è mai aperta!", toccacrearlo ,ReportState.REGULAR, Luca);
+		Report secondoreportDiLuca = new Report("Servirebbero più cestini", toccacrearlo ,ReportState.REGULAR, Luca);
 		
 		
 		Luca.sendReport(reportDiLuca,Recanati);
 		Luca.sendReport(secondoreportDiLuca, Recanati);
-		Comment commentoDiGiovanni = new Comment("non è vero bro", Giovanni, 0, 0, mybirtday);
+		Comment commentoDiGiovanni = new Comment("concordo.", Giovanni, 0, 0, mybirtday);
 		Giovanni.writeComment(commentoDiGiovanni,reportDiLuca);
 		
 		
