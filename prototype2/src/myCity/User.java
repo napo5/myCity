@@ -9,7 +9,7 @@ public class User {
 	
 	
 	
-	public User(int iD, String name, String surname, String city, Date birthday, String email) {
+	public User( String name, String surname, String city, Date birthday, String email) {
 		
 		
 		this.name = name;

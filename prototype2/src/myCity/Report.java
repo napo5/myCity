@@ -6,13 +6,15 @@ import java.util.ArrayList;
 public class Report {
 	
 	
-	private static int count = 0;
+	private static int count = 1;
 	private int reportID;
 	
 	private String description;
 	private ArrayList<Comment> comments;
 	private ReportState state;
 	private User author;
+	private Task task;
+	
 	
 	
 	
@@ -67,6 +69,16 @@ public class Report {
 	}
 	public void setAuthor(User author) {
 		this.author = author;
+	}
+
+
+	public Task getTask() {
+		return task;
+	}
+
+
+	public void setTask(Task task) {
+		this.task = task;
 	}
 	
 

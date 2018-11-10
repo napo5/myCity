@@ -5,7 +5,16 @@ import java.util.Vector;
 public class Board {
 	
 	
-	 private String city;
+	private static int count = 1;
+	private int boardID;
+	
+	
+
+
+	
+
+
+	private String city;
 	 
 	 
 	Vector<Report> reports = new Vector<Report>(); 
@@ -14,10 +23,22 @@ public class Board {
 
 	Board() {
 		 
+		setBoardID(count++);
 	
 	
 }	
 	
+	public String toString() {
+		return "Board of "+city+" .";
+	}
+	
+	 public void setBoardID(int boardID) {
+			this.boardID = boardID;
+		}
+	 
+	 public int getBoardID() {
+			return boardID;
+		}
 	
 	void addReport(Report report) {
 		reports.addElement(report);
@@ -41,7 +62,7 @@ public class Board {
 	
 	void printReports() {
 		for( int i =0; i < reports.size();i++) {
-			System.out.println(reports.get(i).toString());
+			System.out.println("-"+reports.get(i).getReportID()+" . "+reports.get(i).toString());
 		}
 	}
 	
