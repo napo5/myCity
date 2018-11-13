@@ -8,20 +8,16 @@ public class Task {
 	private String description;
 	private int points;
 	private int exp;
-	
-	
-	
+
 	
 	public Task(String description, int points, int exp) {
-
 		this.description = description;
 		this.points = points;
 		this.exp = exp;
 	}
 	
+	/* let city admin create task from console */
 	public Task() {
-
-		/* let city admin create task from console */
 		
 		System.out.println("Insert description of the task : ");
 		Scanner inputDescription = new Scanner(System.in);
@@ -44,11 +40,9 @@ public class Task {
 	}
 
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 
 	public int getPoints() {
@@ -56,11 +50,9 @@ public class Task {
 	}
 
 
-
 	public void setPoints(int points) {
 		this.points = points;
 	}
-
 
 
 	public int getExp() {
@@ -68,12 +60,9 @@ public class Task {
 	}
 
 
-
 	public void setExp(int exp) {
 		this.exp = exp;
 	}
-
-
 
 
 	
