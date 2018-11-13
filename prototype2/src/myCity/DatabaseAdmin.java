@@ -1,12 +1,12 @@
 package myCity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class DatabaseAdmin extends User{
 
-	public DatabaseAdmin(int iD, String name, String surname, String city, Date birthday, String email) {
-		super(name, surname, city, birthday, email);
-		// TODO Auto-generated constructor stub
+	public DatabaseAdmin(String name, String surname, LocalDate birthday, String email) {
+		super(name, surname, birthday, email);
+
 	}
 
 }

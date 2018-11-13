@@ -1,39 +1,25 @@
 package myCity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class User {
-	
-		private static int count = 0;
-		private int userID;
-	
-	
-	
-	public User( String name, String surname, String city, Date birthday, String email) {
+
+	private String name;
+	private String surname;
+	private LocalDate birthday;
+	private String email;
+
+	public User( String name, String surname, LocalDate birthday, String email) {
 		
 		
 		this.name = name;
 		this.surname = surname;
-		this.city = city;
 		this.birthday = birthday;
 		this.email = email;
-		setUserID(++count);
 	}
 	
-	private String name;
-	private String surname;
-	private String city;
-	private Date birthday;
-	private String email;
-	
-	
-	public int getUserID() {
-		return userID;
-	}
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-	
+
+
 
 	public String getName() {
 		return name;
@@ -47,10 +33,10 @@ public class User {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public Date getBirthday() {
+	public LocalDate getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 	public String getEmail() {
@@ -59,12 +45,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
+	
 	
 	
 	

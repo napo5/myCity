@@ -1,30 +1,33 @@
 package myCity;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
+/**
+ * Board
+ *
+ * Every board belongs to a single city
+ * Has its own ID and contains reports about the city,
+ * citizens and city admins lists.
+ *
+ */
 public class Board {
-	
-	
-	private static int count = 1;
+
+
+	private static int count = 0;
 	private int boardID;
-	
-	
-
-
-	
 
 
 	private String city;
-	 
-	 
-	Vector<Report> reports = new Vector<Report>(); 
-	Vector<Citizen> citizens = new Vector<Citizen>();
-	Vector<CityAdmin> admins = new Vector<CityAdmin>();
 
-	Board() {
+	private ArrayList<Report> reports = new ArrayList<>();
+	private ArrayList<Citizen> citizens = new ArrayList<>();
+	private ArrayList<CityAdmin> admins = new ArrayList<>();
+
+
+
+	public Board() {
 		 
-		setBoardID(count++);
-	
+		setBoardID(++count);
 	
 }	
 	
@@ -41,31 +44,40 @@ public class Board {
 		}
 	
 	void addReport(Report report) {
-		reports.addElement(report);
+		reports.add(report);
 	}
 	
 	void addCitizen(Citizen citizen) {
-		citizens.addElement(citizen);
+		citizens.add(citizen);
 	}
 	
 	void addAdmin(CityAdmin admin) {
-		admins.addElement(admin);
+		admins.add(admin);
 	}
 	
 	
 	boolean isACitizen(Citizen citizenToCheck) {
-		if(this.citizens.contains(citizenToCheck)){
-			return true;
-		}
-		else return false;
+
+		return this.citizens.contains(citizenToCheck);
+
 	}
-	
+
+	// prints a list of all board's reports (- ID. USER posted REPORT_TITLE) format.
 	void printReports() {
 		for( int i =0; i < reports.size();i++) {
 			System.out.println("-"+reports.get(i).getReportID()+" . "+reports.get(i).toString());
 		}
 	}
-	
+
+	// prints a list of all citizens of the city (- ID. NAME SURNAME) format.
+	void printCitizens() {
+		
+		System.out.println("There are "+citizens.size()+" citizens.");
+
+		for( int i =0; i < citizens.size();i++) {
+			System.out.println("-"+citizens.get(i).getCitizenID()+" . "+citizens.get(i).toString());
+		}
+	}
 
 
 	public String getCity() {
@@ -78,16 +90,30 @@ public class Board {
 	}
 
 
-	public Vector<Report> getReports() {
+	public ArrayList<Report> getReports() {
 		return reports;
 	}
 
 
-	public void setReports(Vector<Report> reports) {
+	public void setReports(ArrayList<Report> reports) {
 		this.reports = reports;
 	}
 
+	public ArrayList<Citizen> getCitizens() {
+		return citizens;
+	}
 
+	public void setCitizens(ArrayList<Citizen> citizens) {
+		this.citizens = citizens;
+	}
+
+	public ArrayList<CityAdmin> getAdmins() {
+		return admins;
+	}
+
+	public void setAdmins(ArrayList<CityAdmin> admins) {
+		this.admins = admins;
+	}
 	 
 }
 

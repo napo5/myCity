@@ -3,6 +3,11 @@ package myCity;
 import java.util.Date;
 
 public class Comment {
+	
+	private static int count = 0;
+	private int commentID;
+	
+	
 
 	private String description;
 	private User author;
@@ -12,16 +17,21 @@ public class Comment {
 	
 	
 	
-	public Comment(String description, User author, int likes, int dislikes, Date date) {
-		super();
+	public Comment(String description, User author) {
+
 		this.description = description;
 		this.author = author;
-		this.likes = likes;
-		this.dislikes = dislikes;
-		this.date = date;
+		Date now = new Date();
+		this.date = now;
+		setCommentID(++count);
 	}
-	
-	public String getDescription() {
+
+    @Override
+    public String toString() {
+        return author.getName()+author.getSurname()+" commented: "+description;
+    }
+
+    public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
@@ -50,5 +60,14 @@ public class Comment {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+
+	public int getCommentID() {
+		return commentID;
+	}
+
+	public void setCommentID(int commentID) {
+		this.commentID = commentID;
 	}
 }
