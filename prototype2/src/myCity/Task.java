@@ -1,5 +1,7 @@
 package myCity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 
@@ -8,8 +10,8 @@ public class Task {
 	private String description;
 	private int points;
 	private int exp;
+	private HashMap<Worker,ApplyRequest> applyList = new HashMap<Worker,ApplyRequest>();
 
-	
 	public Task(String description, int points, int exp) {
 		this.description = description;
 		this.points = points;
@@ -64,6 +66,19 @@ public class Task {
 		this.exp = exp;
 	}
 
+	public HashMap<Worker,ApplyRequest> getApplyList() {  
+		return this.applyList;
+	}
+	
+	public void printApplyList() {
+		for (HashMap.Entry<Worker, ApplyRequest> entry : applyList.entrySet()) {
+		    System.out.println(entry.getKey().getName()+" "+ entry.getKey().getSurname() +" : "+entry.getValue().getDaysToComplete());
+		}
+	}
+
+	public void addApply(Worker applicant,ApplyRequest request) {
+		this.applyList.put(applicant, request);
+	}
 
 	
 

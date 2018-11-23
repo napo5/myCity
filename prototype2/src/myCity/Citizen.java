@@ -5,8 +5,8 @@ import java.time.LocalDate;
 
 public class Citizen extends User {
 
-	private static int count = 0;
-	private int citizenID;
+	protected static int count = 0;
+	protected int citizenID;
 
 	
 	public Citizen(String name, String surname, LocalDate birthday, String email) {
