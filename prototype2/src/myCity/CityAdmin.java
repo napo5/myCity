@@ -5,22 +5,64 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Map.Entry;
 
 
-public class CityAdmin extends User {
+public class CityAdmin  {
 	
+	private String name;
+	private String surname;
+	private LocalDate birthday;
+	private String email;
 	private static int count = 0;
 	private int cityadminID;
 
 	
 	
 	public CityAdmin(String name, String surname, LocalDate birthday, String email) {
-		super(name, surname, birthday, email);
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.birthday = birthday;
 		setCityadminID(++count);
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public LocalDate getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(LocalDate birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public static int getCount() {
+		return count;
+	}
+
 	void changeState(Report report, ReportState state) {	
 		report.setState(state);
 		if(state==ReportState.TASK_AVAILABLE) {
@@ -49,11 +91,15 @@ public class CityAdmin extends User {
 		int i = 0;
 		System.out.println("Seleziona la richieste da accettare :");
 		for (Entry<Worker, ApplyRequest> element : taskManager.analyzeWorkerRequests(task)) {
-			System.out.println(i++ + ") " +element);
+			System.out.println(element.getKey().getCitizenID() + ") " +element);
 		}
 		InputStream workerChoosen = System.in;
 		BufferedReader br = new BufferedReader(new InputStreamReader(workerChoosen));
-		System.out.println("il Worker scelto è :" + br.readLine()); //this will be sostitued with (send confirm request);
+		int citizenID = Integer.parseInt(br.readLine());
+		//this will be sostitued with (send confirm request);
+		for (Entry<Worker, ApplyRequest> element : taskManager.analyzeWorkerRequests(task)) {
+			if (element.getKey().getCitizenID() == citizenID) System.out.println("il Worker scelto è :" + element.getKey().getName() + " " + element.getKey().getSurname());
+		}
 	}
 }
 	

@@ -13,16 +13,16 @@ public class Report {
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
 	private ReportState state = ReportState.REGULAR;
 	private Date date;
-	private User author;
+	private Citizen author;
 	private Task task;
 	
 	
-	public Report(String title,String description, User author) {
+	public Report(String title,String description, Citizen author) {
 		this.setTitle(title);
 		this.description = description;
 		this.author = author;
 		Date now = new Date();
-		this.date = now;
+		this.setDate(now);
 		setReportID(++count);	
 	}
 
@@ -62,11 +62,11 @@ public class Report {
 		this.state = state;
 	}
 
-	public User getAuthor() {
+	public Citizen getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(User author) {
+	public void setAuthor(Citizen author) {
 		this.author = author;
 	}
 
@@ -99,6 +99,14 @@ public class Report {
 			for( int i =0; i < comments.size();i++) {
 				System.out.println("-"+comments.get(i).getCommentID()+" . "+comments.get(i).toString());	
 		}
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	
 

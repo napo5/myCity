@@ -11,14 +11,14 @@ import myCity.CityAdmin;
 import myCity.Report;
 import myCity.Task;
 import myCity.TaskManager;
-import myCity.User;
+import myCity.Citizen;
 import myCity.Worker;
 
 class CityAdminTest {
 
 	@Test
 	void ChooseWorkerForTask() throws IOException {
-		User author = new User("Name","Surname",LocalDate.now(),"email@gmail.com");
+		Citizen author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
 		Report report = new Report("Report Title","Report description",author);
 		Task task = new Task("Task Description",10,15);
 		report.setTask(task);

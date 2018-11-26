@@ -7,13 +7,13 @@ public class Comment {
 	private static int count = 0;
 	private int commentID;
 	private String description;
-	private User author;
+	private Citizen author;
 	private int likes;
 	private int dislikes;
 	private Date date;
 
 	
-	public Comment(String description, User author) {
+	public Comment(String description, Citizen author) {
 		this.description = description;
 		this.author = author;
 		Date now = new Date();
@@ -34,11 +34,11 @@ public class Comment {
 		this.description = description;
 	}
 	
-	public User getAuthor() {
+	public Citizen getAuthor() {
 		return author;
 	}
 	
-	public void setAuthor(User author) {
+	public void setAuthor(Citizen author) {
 		this.author = author;
 	}
 	

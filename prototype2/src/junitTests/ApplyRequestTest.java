@@ -3,17 +3,18 @@ package junitTests;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
+
+import myCity.Citizen;
 import myCity.Report;
 import myCity.Task;
 import myCity.TaskManager;
-import myCity.User;
 import myCity.Worker;
 
 class ApplyRequestTest {
 
 	@Test
-	void ApplyRequestTest() { //test if after someone's apply, the applyRequest is saved
-		User author = new User("Name","Surname",LocalDate.now(),"email@gmail.com");
+	void ApplyRequestsTest() { //test if after someone's apply, the applyRequest is saved
+		Citizen author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
 		Report report = new Report("Report Title","Report description",author);
 		Task task = new Task("Task Description",10,15);
 		report.setTask(task);

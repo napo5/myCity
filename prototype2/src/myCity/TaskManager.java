@@ -4,12 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
-import com.sun.tools.javac.util.List;
 
 public class TaskManager {
 
@@ -21,7 +17,7 @@ public class TaskManager {
 		return orderApplyRequests(task.getApplyList());
 	}
 	
-	private ArrayList<Entry<Worker,ApplyRequest>> orderApplyRequests(HashMap hashmap) { //order the ApplyRequest list based on DaysToComplete value;
+	private ArrayList<Entry<Worker,ApplyRequest>> orderApplyRequests(HashMap<Worker,ApplyRequest> hashmap) { //order the ApplyRequest list based on DaysToComplete value;
 		 ArrayList<Entry<Worker, ApplyRequest>> entryList = new ArrayList<Map.Entry<Worker, ApplyRequest>>(hashmap.entrySet());
          Collections.sort(
                  entryList, new Comparator<Map.Entry<Worker, ApplyRequest>>() {
