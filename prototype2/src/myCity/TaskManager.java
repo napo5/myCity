@@ -13,7 +13,7 @@ public class TaskManager {
 		
 	}
 	
-	public ArrayList<Entry<Worker,ApplyRequest>> analyzeWorkerRequests(Task task) {  //use an alogorithm to analyze the applyRequest list; 
+	public ArrayList<Entry<Worker,ApplyRequest>> analyzeWorkerRequests(Task task) {  //use an algorithm to analyze the applyRequest list;
 		return orderApplyRequests(task.getApplyList());
 	}
 	
@@ -31,4 +31,12 @@ public class TaskManager {
      );
          return entryList;
 	}
+
+	public void assignPointsWorker(Task task){
+
+	    task.getPersonInCharge().setExp(task.getExp());
+	    task.getPersonInCharge().setPoints(task.getPoints());
+    }
+
+
 }

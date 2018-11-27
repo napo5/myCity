@@ -9,8 +9,12 @@ public class Citizen {
 	private String surname;
 	private LocalDate birthday;
 	private String email;
+	private int points;
+	private int exp;
 	protected static int count = 0;
 	protected int citizenID;
+
+
 
 	
 	public Citizen(String name, String surname, LocalDate birthday, String email) {
@@ -18,6 +22,8 @@ public class Citizen {
 		this.surname = surname;
 		this.email = email;
 		this.birthday = birthday;
+		this.exp = 0;
+		this.points = 0;
 		setCitizenID(++count);
 	}
 
@@ -58,6 +64,29 @@ public class Citizen {
 		return count;
 	}
 
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public int getCitizenID() {
+		return citizenID;
+	}
+
+	public void setCitizenID(int citizenID) {
+		this.citizenID = citizenID;
+	}
 
 	void sendReport(Report report,Board hisCity) {		
 		if(hisCity.isACitizen(this)){
@@ -69,16 +98,12 @@ public class Citizen {
 		report.addComment(comment);	
 	}
 
-
-	public int getCitizenID() {
-		return citizenID;
+	void checkTaskDone(Task task, boolean confirm){
+		if (task.getState()==TaskState.WAITING_FOR_CONFIRMS){
+			// TODO change bool to TaskConfirm
+				task.addCitizenCheck(this,confirm);
+		}
 	}
-
-
-	public void setCitizenID(int citizenID) {
-		this.citizenID = citizenID;
-	}
-	
 	public String toString() {
 		return getName()+" "+getSurname();	
 	}	
