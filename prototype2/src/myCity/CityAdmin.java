@@ -98,7 +98,7 @@ public class CityAdmin  {
 		int citizenID = Integer.parseInt(br.readLine());
 		for (Entry<Worker, ApplyRequest> element : taskManager.analyzeWorkerRequests(task)) {
 			if (element.getKey().getCitizenID() == citizenID) {
-				System.out.println("il Worker scelto è :" + element.getKey().getName() + " " + element.getKey().getSurname());
+				System.out.println("il Worker scelto e :" + element.getKey().getName() + " " + element.getKey().getSurname());
 				element.getKey().addConfirmRequest(task);
 			}
 			
