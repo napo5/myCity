@@ -96,9 +96,12 @@ public class CityAdmin  {
 		InputStream workerChoosen = System.in;
 		BufferedReader br = new BufferedReader(new InputStreamReader(workerChoosen));
 		int citizenID = Integer.parseInt(br.readLine());
-		//this will be sostitued with (send confirm request);
 		for (Entry<Worker, ApplyRequest> element : taskManager.analyzeWorkerRequests(task)) {
-			if (element.getKey().getCitizenID() == citizenID) System.out.println("il Worker scelto è :" + element.getKey().getName() + " " + element.getKey().getSurname());
+			if (element.getKey().getCitizenID() == citizenID) {
+				System.out.println("il Worker scelto è :" + element.getKey().getName() + " " + element.getKey().getSurname());
+				element.getKey().addConfirmRequest(task);
+			}
+			
 		}
 	}
 }
