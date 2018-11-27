@@ -1,19 +1,24 @@
 package myCity;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 
 public class Task {
 	
+	private static int count = 0;
+	private int taskID;
 	private String description;
 	private int points;
 	private int exp;
+	private Worker personInCharge; // the worker who has been choose to solve the task;
+	private HashMap<Worker,ApplyRequest> applyList = new HashMap<Worker,ApplyRequest>();
 
-	
 	public Task(String description, int points, int exp) {
 		this.description = description;
 		this.points = points;
 		this.exp = exp;
+		setTaskID(++count);
 	}
 	
 	/* let city admin create task from console */
@@ -64,6 +69,35 @@ public class Task {
 		this.exp = exp;
 	}
 
+	public void setTaskID(int taskID) {
+		this.taskID = taskID;
+	}
+	
+	public int getTaskID() {
+		return this.taskID;
+	}
+	
+	public HashMap<Worker,ApplyRequest> getApplyList() {  
+		return this.applyList;
+	}
+	
+	public void setPersonInCharge(Worker personInCharge) {
+		this.personInCharge = personInCharge;
+	}
+	
+	public Worker getPersonInCharge() {
+		return this.personInCharge;
+	}
+	
+	public void printApplyList() {
+		for (HashMap.Entry<Worker, ApplyRequest> entry : applyList.entrySet()) {
+		    System.out.println(entry.getKey().getName()+" "+ entry.getKey().getSurname() +" : "+entry.getValue().getDaysToComplete());
+		}
+	}
+
+	public void addApply(Worker applicant,ApplyRequest request) {
+		this.applyList.put(applicant, request);
+	}
 
 	
 
