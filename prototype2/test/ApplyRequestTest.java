@@ -1,4 +1,5 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertTrue;
+
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 

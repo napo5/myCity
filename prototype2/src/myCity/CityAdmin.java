@@ -88,7 +88,6 @@ public class CityAdmin  {
 	}
 	
 	public void chooseWorkerForTask(Task task,TaskManager taskManager) throws IOException { //generate the sorted list of applyRequest of a specific task, and choose the right worker;
-		int i = 0;
 		System.out.println("Seleziona la richieste da accettare :");
 		for (Entry<Worker, ApplyRequest> element : taskManager.analyzeWorkerRequests(task)) {
 			System.out.println(element.getKey().getCitizenID() + ") " +element);

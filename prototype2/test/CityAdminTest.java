@@ -1,6 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
@@ -34,7 +36,11 @@ class CityAdminTest {
 
 		assertTrue(task.getApplyList().size()==3);
 		CityAdmin ca = new CityAdmin("Luca","Pretini",LocalDate.now(),"luca@gmail.com");
+		InputStream in = new ByteArrayInputStream("3".getBytes());
+	    System.setIn(in);
 		ca.chooseWorkerForTask(task, taskManager);
+		InputStream in2 = new ByteArrayInputStream("3".getBytes());
+		System.setIn(in2);
 		ca.chooseWorkerForTask(task2, taskManager);
 		// ANDREA ROSSI must be selected, otherwhise asserts and print wont work; 
 		worker2.printConfirmRequest();
