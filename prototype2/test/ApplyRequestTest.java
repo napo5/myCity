@@ -1,4 +1,3 @@
-import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
@@ -8,6 +7,8 @@ import myCity.Report;
 import myCity.Task;
 import myCity.TaskManager;
 import myCity.Worker;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApplyRequestTest {
 
@@ -24,7 +25,7 @@ class ApplyRequestTest {
 		Worker worker3 = new Worker("Francesco", "Verdi", LocalDate.now(), "email2@gmail.com");
 		worker3.applyForTask(report, 1);
 		TaskManager taskManager = new TaskManager();
-		System.out.println(taskManager.analyzeWorkerRequests(task));
+		//System.out.println(taskManager.analyzeWorkerRequests(task));
 		assertTrue(task.getApplyList().size()==3);
 		// not yet finished;
 		
