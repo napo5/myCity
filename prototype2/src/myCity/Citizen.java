@@ -1,6 +1,7 @@
 package myCity;
 
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Citizen {
@@ -9,7 +10,7 @@ public class Citizen {
 	private String surname;
 	private LocalDate birthday;
 	private String email;
-	protected static int count = 0;
+	protected static AtomicInteger count = new AtomicInteger(0);
 	protected int citizenID;
 
 	
@@ -18,7 +19,7 @@ public class Citizen {
 		this.surname = surname;
 		this.email = email;
 		this.birthday = birthday;
-		setCitizenID(++count);
+		this.citizenID = count.incrementAndGet();
 	}
 
 	
@@ -54,12 +55,7 @@ public class Citizen {
 		this.email = email;
 	}
 
-	public static int getCount() {
-		return count;
-	}
-
-
-	void sendReport(Report report,Board hisCity) {		
+	void sendReport(Report report,Board hisCity) {
 		if(hisCity.isACitizen(this)){
 		hisCity.addReport(report);
 		}	

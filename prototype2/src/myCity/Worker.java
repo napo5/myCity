@@ -11,7 +11,7 @@ import java.util.Iterator;
 public class Worker extends Citizen {
 
 	private ArrayList<Task> confirmRequest = new ArrayList<Task>();
-	
+
 	public Worker(String name, String surname, LocalDate birthday, String email) {
 		super(name, surname, birthday, email);
 	}
@@ -48,8 +48,9 @@ public class Worker extends Citizen {
 		BufferedReader br = new BufferedReader(new InputStreamReader(taskChoosen));
 		int taskID = Integer.parseInt(br.readLine());
 		for (Task task : this.confirmRequest) {
-			if (task.getTaskID() == taskID && task.getPersonInCharge() == null) task.setPersonInCharge(this);
-			//change state of the report in TaskInProgress.
+			System.out.println(task.getTaskID());
+			if (task.getTaskID() == taskID && task.getPersonInCharge() == null)
+				task.setPersonInCharge(this);
 		}
 	}
 	

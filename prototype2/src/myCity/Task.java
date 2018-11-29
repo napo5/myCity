@@ -2,11 +2,12 @@ package myCity;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Task {
 	
-	private static int count = 0;
+	private static AtomicInteger count = new AtomicInteger(0);
 	private int taskID;
 	private String description;
 	private int points;
@@ -18,7 +19,7 @@ public class Task {
 		this.description = description;
 		this.points = points;
 		this.exp = exp;
-		setTaskID(++count);
+		this.taskID = count.incrementAndGet();
 	}
 	
 	/* let city admin create task from console */
@@ -69,10 +70,6 @@ public class Task {
 		this.exp = exp;
 	}
 
-	public void setTaskID(int taskID) {
-		this.taskID = taskID;
-	}
-	
 	public int getTaskID() {
 		return this.taskID;
 	}
