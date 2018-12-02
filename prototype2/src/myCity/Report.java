@@ -11,6 +11,7 @@ public class Report {
 	private int reportID;
 	private String title;
 	private String description;
+	public static final int pointsToConfirm = 4;  //To be decided.
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
 	private ReportState state = ReportState.REGULAR;
 	private Date date;

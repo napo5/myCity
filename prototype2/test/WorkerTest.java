@@ -13,13 +13,13 @@ import myCity.Task;
 import myCity.TaskManager;
 import myCity.Worker;
 
-class WorkerTests {
+class WorkerTest {
 
 	@Test
 	void AcceptTaskTest() throws IOException {
 		Citizen authori = new Citizen("Name", "Surname", LocalDate.now(), "email@gmail.com");
 		Report report = new Report("Report Title", "Report description", authori);
-		Task task = new Task("Task Description", 10, 15);
+		Task task = new Task("Task Description", 10, 15,5);
 		Worker worker = new Worker("Giovanni", "Santinelli", LocalDate.now(), "email1@gmail.com");
 		Worker worker2 = new Worker("Andrea", "Rossi", LocalDate.now(), "email2@gmail.com");
 		Worker worker3 = new Worker("Francesco", "Verdi", LocalDate.now(), "email2@gmail.com");
@@ -47,7 +47,7 @@ class WorkerTests {
 	void RefuseTaskTest() throws IOException {
 		Citizen author = new Citizen("Name", "Surname", LocalDate.now(), "email@gmail.com");
 		Report report = new Report("Report Title", "Report description", author);
-		Task task = new Task("Task Description", 10, 15);
+		Task task = new Task("Task Description", 10, 15,5);
 		Worker worker = new Worker("Giovanni", "Santinelli", LocalDate.now(), "email1@gmail.com");
 		Worker worker2 = new Worker("Andrea", "Rossi", LocalDate.now(), "email2@gmail.com");
 		Worker worker3 = new Worker("Francesco", "Verdi", LocalDate.now(), "email2@gmail.com");

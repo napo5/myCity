@@ -10,6 +10,8 @@ public class Citizen {
 	private String surname;
 	private LocalDate birthday;
 	private String email;
+	private int points;
+	private int exp;
 	protected static AtomicInteger count = new AtomicInteger(0);
 	protected int citizenID;
 
@@ -73,6 +75,29 @@ public class Citizen {
 
 	public void setCitizenID(int citizenID) {
 		this.citizenID = citizenID;
+	}
+	
+	public int getPoints() {
+		return points;
+	}
+	
+	public void setPoints(int points) {
+		this.points = points;
+	}
+	
+	public int getExp() {
+		return exp;
+	}
+	
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+	
+	public void checkTaskDone(Task task, TaskDone confirm){
+		//TaskDone should be created now.
+		if (task.getState()==TaskState.WAITING_FOR_CONFIRMS){
+				task.addCitizenCheck(this,confirm);
+		}
 	}
 	
 	public String toString() {
