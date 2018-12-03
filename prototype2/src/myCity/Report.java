@@ -2,14 +2,16 @@ package myCity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Report {
 	
-	private static int count = 0;
+	private static AtomicInteger count = new AtomicInteger(0);
 	private int reportID;
 	private String title;
 	private String description;
+	public static final int pointsToConfirm = 4;  //To be decided.
 	private ArrayList<Comment> comments = new ArrayList<Comment>();
 	private ReportState state = ReportState.REGULAR;
 	private Date date;
@@ -23,7 +25,7 @@ public class Report {
 		this.author = author;
 		Date now = new Date();
 		this.setDate(now);
-		setReportID(++count);	
+		this.reportID = count.incrementAndGet();
 	}
 
 	public Report(){

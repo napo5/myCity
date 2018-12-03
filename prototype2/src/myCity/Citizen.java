@@ -1,6 +1,7 @@
 package myCity;
 
 import java.time.LocalDate;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Citizen {
@@ -11,7 +12,7 @@ public class Citizen {
 	private String email;
 	private int points;
 	private int exp;
-	protected static int count = 0;
+	protected static AtomicInteger count = new AtomicInteger(0);
 	protected int citizenID;
 
 
@@ -22,9 +23,7 @@ public class Citizen {
 		this.surname = surname;
 		this.email = email;
 		this.birthday = birthday;
-		this.exp = 0;
-		this.points = 0;
-		setCitizenID(++count);
+		this.citizenID = count.incrementAndGet();
 	}
 
 	
@@ -60,16 +59,10 @@ public class Citizen {
 		this.email = email;
 	}
 
-	public static int getCount() {
-		return count;
-	}
-
-	public int getPoints() {
-		return points;
-	}
-
-	public void setPoints(int points) {
-		this.points = points;
+	void sendReport(Report report,Board hisCity) {
+		if(hisCity.isACitizen(this)){
+		hisCity.addReport(report);
+		}	
 	}
 
 	public int getExp() {
@@ -94,16 +87,29 @@ public class Citizen {
 		}	
 	}
 	
-	void writeComment(Comment comment, Report report){	
-		report.addComment(comment);	
+	public int getPoints() {
+		return points;
 	}
-
-	void checkTaskDone(Task task, boolean confirm){
+	
+	public void setPoints(int points) {
+		this.points = points;
+	}
+	
+	public int getExp() {
+		return exp;
+	}
+	
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+	
+	public void checkTaskDone(Task task, TaskDone confirm){
+		//TaskDone should be created now.
 		if (task.getState()==TaskState.WAITING_FOR_CONFIRMS){
-			// TODO change bool to TaskConfirm
 				task.addCitizenCheck(this,confirm);
 		}
 	}
+	
 	public String toString() {
 		return getName()+" "+getSurname();	
 	}	

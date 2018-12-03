@@ -11,6 +11,7 @@ public class ApplyRequest {
 	public Integer getDaysToComplete() {
 		return this.daysToComplete;
 	}
+
 	@Override
 	public String toString() {
 		return getDaysToComplete() + "";

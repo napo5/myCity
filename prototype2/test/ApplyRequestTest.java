@@ -1,4 +1,4 @@
-import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
@@ -8,13 +8,15 @@ import myCity.Task;
 import myCity.TaskManager;
 import myCity.Worker;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class ApplyRequestTest {
 
 	@Test
 	void ApplyRequestsTest() { //test if after someone's apply, the applyRequest is saved
 		Citizen author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
 		Report report = new Report("Report Title","Report description",author);
-		Task task = new Task("Task Description",10,15);
+		Task task = new Task("Task Description",10,15,5);
 		report.setTask(task);
 		Worker worker = new Worker("Giovanni", "Santinelli", LocalDate.now(), "email1@gmail.com");
 		worker.applyForTask(report, 3);
@@ -23,7 +25,7 @@ class ApplyRequestTest {
 		Worker worker3 = new Worker("Francesco", "Verdi", LocalDate.now(), "email2@gmail.com");
 		worker3.applyForTask(report, 1);
 		TaskManager taskManager = new TaskManager();
-		System.out.println(taskManager.analyzeWorkerRequests(task));
+		//System.out.println(taskManager.analyzeWorkerRequests(task));
 		assertTrue(task.getApplyList().size()==3);
 		// not yet finished;
 		

@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class CityAdmin  {
@@ -14,7 +17,7 @@ public class CityAdmin  {
 	private String surname;
 	private LocalDate birthday;
 	private String email;
-	private static int count = 0;
+	private static AtomicInteger count = new AtomicInteger(0);
 	private int cityadminID;
 
 	
@@ -24,7 +27,7 @@ public class CityAdmin  {
 		this.surname = surname;
 		this.email = email;
 		this.birthday = birthday;
-		setCityadminID(++count);
+		this.cityadminID = count.incrementAndGet();
 	}
 	
 	public String getName() {
@@ -59,11 +62,7 @@ public class CityAdmin  {
 		this.email = email;
 	}
 
-	public static int getCount() {
-		return count;
-	}
-
-	void changeState(Report report, ReportState state) {	
+	void changeState(Report report, ReportState state) {
 		report.setState(state);
 		if(state==ReportState.TASK_AVAILABLE) {
 			Task newtask = new Task();
@@ -86,23 +85,15 @@ public class CityAdmin  {
 	public void setCityadminID(int cityadminID) {
 		this.cityadminID = cityadminID;
 	}
-	
-	public void chooseWorkerForTask(Task task,TaskManager taskManager) throws IOException { //generate the sorted list of applyRequest of a specific task, and choose the right worker;
-		int i = 0;
-		System.out.println("Seleziona la richieste da accettare :");
-		for (Entry<Worker, ApplyRequest> element : taskManager.analyzeWorkerRequests(task)) {
-			System.out.println(element.getKey().getCitizenID() + ") " +element);
-		}
-		InputStream workerChoosen = System.in;
-		BufferedReader br = new BufferedReader(new InputStreamReader(workerChoosen));
-		int citizenID = Integer.parseInt(br.readLine());
-		for (Entry<Worker, ApplyRequest> element : taskManager.analyzeWorkerRequests(task)) {
-			if (element.getKey().getCitizenID() == citizenID) {
-				System.out.println("il Worker scelto e :" + element.getKey().getName() + " " + element.getKey().getSurname());
-				element.getKey().addConfirmRequest(task);
-			}
-			
-		}
+
+	public int chooseWorkerForTask(HashMap<Worker, ApplyRequest> workersList) throws IOException{
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		workersList.forEach((k, v) -> {
+			System.out.println("Choose one worker: ");
+			System.out.println(k.getCitizenID() + " - " + k.getName() + "(" + v.getDaysToComplete() + ")");
+		});
+		int opt = Integer.parseInt(in.readLine());
+		return opt;
 	}
 }
 	

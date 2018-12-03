@@ -1,6 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
@@ -19,8 +21,8 @@ class CityAdminTest {
 		Citizen author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
 		Report report = new Report("Report Title","Report description",author);
 		Report report2 = new Report("Report number 2","Report description number 2",author);
-		Task task = new Task("Task Description",10,15);
-		Task task2 = new Task("Task number 2",30,45);
+		Task task = new Task("Task Description",10,15,5);
+		Task task2 = new Task("Task number 2",30,45,5);
 		report.setTask(task);
 		report2.setTask(task2);
 		Worker worker = new Worker("Giovanni", "Santinelli", LocalDate.now(), "email1@gmail.com");
@@ -34,8 +36,12 @@ class CityAdminTest {
 
 		assertTrue(task.getApplyList().size()==3);
 		CityAdmin ca = new CityAdmin("Luca","Pretini",LocalDate.now(),"luca@gmail.com");
-		ca.chooseWorkerForTask(task, taskManager);
-		ca.chooseWorkerForTask(task2, taskManager);
+		InputStream in = new ByteArrayInputStream("3".getBytes());
+	    System.setIn(in);
+		//ca.chooseWorkerForTask(task, taskManager);
+		InputStream in2 = new ByteArrayInputStream("3".getBytes());
+		System.setIn(in2);
+		//ca.chooseWorkerForTask(task2, taskManager);
 		// ANDREA ROSSI must be selected, otherwhise asserts and print wont work; 
 		worker2.printConfirmRequest();
 		assertTrue(worker2.getConfirmRequest().size() == 2);

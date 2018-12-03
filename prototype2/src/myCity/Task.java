@@ -2,26 +2,30 @@ package myCity;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Task {
 	
-	private static int count = 0;
+	private static AtomicInteger count = new AtomicInteger(0);
 	private int taskID;
 	private String description;
 	private int points;
 	private int exp;
-	private TaskState state;
+	public final static int pointsToConfirm = 3; //To be decided.
+	private TaskState state = TaskState.WAITING_FOR_WORKER;
+	private HashMap<Citizen,TaskDone> positiveCheck = new HashMap<Citizen,TaskDone>();
+	private HashMap<Citizen,TaskDone> negativeCheck = new HashMap<Citizen,TaskDone>();
+	private int neededCheck;
 	private Worker personInCharge; // the worker who has been choose to solve the task;
 	private HashMap<Worker,ApplyRequest> applyList = new HashMap<Worker,ApplyRequest>();
-	private int positiveCheck = 0;
-	private int negativeCheck = 0;
-	private int neededChecks;
-	public Task(String description, int points, int exp) {
+
+	public Task(String description, int points, int exp,int neededCheck) {
 		this.description = description;
 		this.points = points;
 		this.exp = exp;
-		setTaskID(++count);
+		this.taskID = count.incrementAndGet();
+		this.neededCheck = neededCheck;
 	}
 	
 	/* let city admin create task from console */
@@ -49,6 +53,12 @@ public class Task {
 		return description;
 	}
 
+	public TaskState getState() {
+		return state;
+	}
+ 	public void setState(TaskState state) {
+		this.state = state;
+	}
 
 	public void setDescription(String description) {
 		this.description = description;
@@ -74,12 +84,20 @@ public class Task {
 		this.exp = exp;
 	}
 
-	public void setTaskID(int taskID) {
-		this.taskID = taskID;
-	}
-	
 	public int getTaskID() {
 		return this.taskID;
+	}
+	
+	public HashMap<Citizen, TaskDone> getPositiveCheck() {
+		return this.positiveCheck;
+	}
+	
+	public HashMap<Citizen, TaskDone> getNegativeCheck() {
+		return this.negativeCheck;
+	}
+	
+	public int getNeededCheck() {
+		return this.neededCheck;
 	}
 	
 	public HashMap<Worker,ApplyRequest> getApplyList() {  
@@ -113,28 +131,13 @@ public class Task {
 		this.applyList.put(applicant, request);
 	}
 
-	public void addCitizenCheck(Citizen citizen, boolean confirm) {
-		if(confirm==true){
-			positiveCheck++;
-		}
-		if(confirm==false){
-			negativeCheck++;
-		}
-
-		// example exp and points
-		citizen.setExp(citizen.getExp()+5);
-		citizen.setPoints(citizen.getPoints()+1);
-
-		if(positiveCheck == neededChecks){
-			//assign points to worker and change state
-		}
-
-		if(negativeCheck == neededChecks){
-			//search other worker
-		}
-
-	}
-
+	public void addCitizenCheck(Citizen citizen, TaskDone confirm) {
+		if(confirm.isConfirm()){
+			positiveCheck.put(citizen, confirm);
+		} else negativeCheck.put(citizen, confirm);
+ 	}
 	
+
+
 
 }
