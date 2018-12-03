@@ -65,14 +65,6 @@ public class Citizen {
 		}	
 	}
 
-	public int getExp() {
-		return exp;
-	}
-
-	public void setExp(int exp) {
-		this.exp = exp;
-	}
-
 	public int getCitizenID() {
 		return citizenID;
 	}
@@ -81,11 +73,7 @@ public class Citizen {
 		this.citizenID = citizenID;
 	}
 
-	void sendReport(Report report,Board hisCity) {		
-		if(hisCity.isACitizen(this)){
-		hisCity.addReport(report);
-		}	
-	}
+
 	
 	public int getPoints() {
 		return points;
@@ -108,6 +96,10 @@ public class Citizen {
 		if (task.getState()==TaskState.WAITING_FOR_CONFIRMS){
 				task.addCitizenCheck(this,confirm);
 		}
+	}
+
+	void writeComment(Comment comment, Report report){
+		report.addComment(comment);
 	}
 	
 	public String toString() {

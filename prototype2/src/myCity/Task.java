@@ -112,13 +112,6 @@ public class Task {
 		return this.personInCharge;
 	}
 
-	public TaskState getState() {
-		return state;
-	}
-
-	public void setState(TaskState state) {
-		this.state = state;
-	}
 
 
 	public void printApplyList() {
