@@ -6,16 +6,10 @@ public class ReportManager {
 
     private ArrayList<Report> reportToCheck = new ArrayList<>();
 
-    public ReportManager() {
-
-    }
+    public ReportManager() {}
 
     public void addReport(Report report) {
         reportToCheck.add(report);
-    }
-
-    public Report getRep() {
-        return reportToCheck.get(0);
     }
 
     public void applyTaskChecker() {
@@ -25,4 +19,6 @@ public class ReportManager {
             }
         });
     }
+
+
 }

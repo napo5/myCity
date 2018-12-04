@@ -17,7 +17,7 @@ import myCity.Worker;
 class CityAdminTest {
 
 	@Test
-	void ChooseWorkerForTask() throws IOException {
+	void ChooseWorkerForTask() {
 		Citizen author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
 		Report report = new Report("Report Title","Report description",author);
 		Report report2 = new Report("Report number 2","Report description number 2",author);

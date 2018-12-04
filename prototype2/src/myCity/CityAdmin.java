@@ -20,8 +20,6 @@ public class CityAdmin  {
 	private static AtomicInteger count = new AtomicInteger(0);
 	private int cityadminID;
 
-	
-	
 	public CityAdmin(String name, String surname, LocalDate birthday, String email) {
 		this.name = name;
 		this.surname = surname;
@@ -62,7 +60,7 @@ public class CityAdmin  {
 		this.email = email;
 	}
 
-	void changeState(Report report, ReportState state) {
+	public void changeState(Report report, ReportState state) {
 		report.setState(state);
 		if(state==ReportState.TASK_AVAILABLE) {
 			Task newtask = new Task();
@@ -71,21 +69,25 @@ public class CityAdmin  {
 	}
 	
 	
-	void createTask(Task task, Report report) {	
+	public void createTask(Task task, Report report) {
 		report.setTask(task);
 		report.setState(ReportState.TASK_AVAILABLE);
 	}
-
 
 	public int getCityadminID() {
 		return cityadminID;
 	}
 
-
 	public void setCityadminID(int cityadminID) {
 		this.cityadminID = cityadminID;
 	}
 
+    /**
+     * Let the CityAdmin choose for a preferred Worker
+     * @param workersList HashMap of Worker ordered by DaysToComplete
+     * @return The ID of the Worker chosen
+     * @throws IOException
+     */
 	public int chooseWorkerForTask(HashMap<Worker, ApplyRequest> workersList) throws IOException{
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		workersList.forEach((k, v) -> {
