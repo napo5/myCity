@@ -21,8 +21,8 @@ class CityAdminTest {
 		Citizen author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
 		Report report = new Report("Report Title","Report description",author);
 		Report report2 = new Report("Report number 2","Report description number 2",author);
-		Task task = new Task("Task Description",10,15);
-		Task task2 = new Task("Task number 2",30,45);
+		Task task = new Task("Task Description",10,15,5);
+		Task task2 = new Task("Task number 2",30,45,5);
 		report.setTask(task);
 		report2.setTask(task2);
 		Worker worker = new Worker("Giovanni", "Santinelli", LocalDate.now(), "email1@gmail.com");

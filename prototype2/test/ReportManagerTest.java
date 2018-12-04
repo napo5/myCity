@@ -27,7 +27,7 @@ public class ReportManagerTest {
     static void init() {
         author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
         report = new Report("Report Title","Report description",author);
-        task = new Task("Task Description",10,15);
+        task = new Task("Task Description",10,15,4);
         worker = new Worker("Giovanni", "Santinelli", LocalDate.now(), "email1@gmail.com");
         worker2 = new Worker("Andrea", "Rossi", LocalDate.now(), "email2@gmail.com");
         worker3 = new Worker("Francesco", "Verdi", LocalDate.now(), "email2@gmail.com");

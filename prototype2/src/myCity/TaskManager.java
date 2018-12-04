@@ -35,4 +35,20 @@ public class TaskManager {
 			}
 		});
 	}
+	
+	public void checkTaskDone(Task task) {
+		if (task.getNeededCheck() == task.getPositiveCheck().size()) {
+			task.getPositiveCheck().forEach((k , v) -> { k.setPoints(k.getPoints() + task.pointsToConfirm);
+			});
+			task.setState(TaskState.SOLVED);
+		} else if (task.getNeededCheck() == task.getNegativeCheck().size()){
+			task.getNegativeCheck().forEach((k , v) -> { k.setPoints(k.getPoints() + task.pointsToConfirm);
+			});
+			/*
+			*da decidere in UC (si potrebbe mettere in "waiting for workers" e ricominciare come fosse
+			*un nuovo task.
+			*/
+		}
+	}
+	
 }

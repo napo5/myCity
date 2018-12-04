@@ -16,7 +16,7 @@ class ApplyRequestTest {
 	void ApplyRequestsTest() { //test if after someone's apply, the applyRequest is saved
 		Citizen author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
 		Report report = new Report("Report Title","Report description",author);
-		Task task = new Task("Task Description",10,15);
+		Task task = new Task("Task Description",10,15,5);
 		report.setTask(task);
 		Worker worker = new Worker("Giovanni", "Santinelli", LocalDate.now(), "email1@gmail.com");
 		worker.applyForTask(report, 3);
