@@ -1,7 +1,7 @@
 package myCity;
 
 /**
- * States can be modified by City Admin
+ * States can be modified by City Admin or automatically by the ReportManager
  *
  * REGULAR = default state,
  * CLOSED = citizens can no longer comment,
@@ -11,6 +11,10 @@ package myCity;
  */
 public enum ReportState {
 	
-	REGULAR,CLOSED,SUSPENDED,TASK_AVAILABLE,WORK_IN_PROGRESS;	
+	REGULAR,
+	CLOSED,
+	SUSPENDED,
+	TASK_AVAILABLE,
+	WORK_IN_PROGRESS;
 	
 }
