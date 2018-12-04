@@ -42,6 +42,8 @@ public class Task {
 		System.out.println("Insert exp of the task : ");
 		Scanner inputExp = new Scanner(System.in);
 		this.points = inputPoints.nextInt();
+
+		this.state = TaskState.WAITING_FOR_WORKER;
 		
 	}
 	
@@ -109,7 +111,9 @@ public class Task {
 	public Worker getPersonInCharge() {
 		return this.personInCharge;
 	}
-	
+
+
+
 	public void printApplyList() {
 		for (HashMap.Entry<Worker, ApplyRequest> entry : applyList.entrySet()) {
 		    System.out.println(entry.getKey().getName()+" "+ entry.getKey().getSurname() +" : "+entry.getValue().getDaysToComplete());
