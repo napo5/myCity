@@ -15,6 +15,8 @@ public class Citizen {
 	protected static AtomicInteger count = new AtomicInteger(0);
 	protected int citizenID;
 
+
+
 	
 	public Citizen(String name, String surname, LocalDate birthday, String email) {
 		this.name = name;
@@ -62,20 +64,16 @@ public class Citizen {
 		hisCity.addReport(report);
 		}	
 	}
-	
-	void writeComment(Comment comment, Report report){	
-		report.addComment(comment);	
-	}
-
 
 	public int getCitizenID() {
 		return citizenID;
 	}
 
-
 	public void setCitizenID(int citizenID) {
 		this.citizenID = citizenID;
 	}
+
+
 	
 	public int getPoints() {
 		return points;
@@ -98,6 +96,10 @@ public class Citizen {
 		if (task.getState()==TaskState.WAITING_FOR_CONFIRMS){
 				task.addCitizenCheck(this,confirm);
 		}
+	}
+
+	void writeComment(Comment comment, Report report){
+		report.addComment(comment);
 	}
 	
 	public String toString() {
