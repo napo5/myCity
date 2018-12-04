@@ -5,24 +5,40 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ReportManagerTest {
 
+    private static Citizen author;
+    private static Report report;
+    private static Task task;
+    private static Worker worker;
+    private static Worker worker2;
+    private static Worker worker3;
+    private static TaskManager taskManager;
+    private static CityAdmin ca;
+    private static ReportManager reportManager;
+
+    @BeforeAll
+    static void init() {
+        author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
+        report = new Report("Report Title","Report description",author);
+        task = new Task("Task Description",10,15);
+        worker = new Worker("Giovanni", "Santinelli", LocalDate.now(), "email1@gmail.com");
+        worker2 = new Worker("Andrea", "Rossi", LocalDate.now(), "email2@gmail.com");
+        worker3 = new Worker("Francesco", "Verdi", LocalDate.now(), "email2@gmail.com");
+        taskManager = new TaskManager();
+        ca = new CityAdmin("Luca","Pretini",LocalDate.now(),"luca@gmail.com");
+        reportManager = new ReportManager();
+    }
+
     @Test
     @DisplayName("Change report state to Work in Progress")
     void changeReportState() throws IOException {
-        Citizen author = new Citizen("Name","Surname",LocalDate.now(),"email@gmail.com");
-        Report report = new Report("Report Title","Report description",author);
-        Task task = new Task("Task Description",10,15);
-        Worker worker = new Worker("Giovanni", "Santinelli", LocalDate.now(), "email1@gmail.com");
-        Worker worker2 = new Worker("Andrea", "Rossi", LocalDate.now(), "email2@gmail.com");
-        Worker worker3 = new Worker("Francesco", "Verdi", LocalDate.now(), "email2@gmail.com");
-        TaskManager taskManager = new TaskManager();
-        CityAdmin ca = new CityAdmin("Luca","Pretini",LocalDate.now(),"luca@gmail.com");
-        ReportManager reportManager = new ReportManager();
         reportManager.addReport(report);
         report.setTask(task);
         worker.applyForTask(report, 3);
