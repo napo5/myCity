@@ -11,91 +11,108 @@ import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class CityAdmin  {
-	
-	private String name;
-	private String surname;
-	private LocalDate birthday;
-	private String email;
-	private static AtomicInteger count = new AtomicInteger(0);
-	private int cityadminID;
+public class CityAdmin {
 
-	public CityAdmin(String name, String surname, LocalDate birthday, String email) {
-		this.name = name;
-		this.surname = surname;
-		this.email = email;
-		this.birthday = birthday;
-		this.cityadminID = count.incrementAndGet();
-	}
-	
-	public String getName() {
-		return name;
-	}
+    private static AtomicInteger count = new AtomicInteger(0);
+    private int cityadminID;
+    private String name;
+    private String surname;
+    private LocalDate birthday;
+    private String email;
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	public String getSurname() {
-		return surname;
-	}
+    public CityAdmin(String name, String surname, LocalDate birthday, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.birthday = birthday;
+        this.cityadminID = count.incrementAndGet();
+    }
 
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public LocalDate getBirthday() {
-		return birthday;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setBirthday(LocalDate birthday) {
-		this.birthday = birthday;
-	}
+    public String getSurname() {
+        return surname;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public LocalDate getBirthday() {
+        return birthday;
+    }
 
-	public void changeState(Report report, ReportState state) {
-		report.setState(state);
-		if(state==ReportState.TASK_AVAILABLE) {
-			Task newtask = new Task();
-			report.setTask(newtask);
-			}		
-	}
-	
-	
-	public void createTask(Task task, Report report) {
-		report.setTask(task);
-		report.setState(ReportState.TASK_AVAILABLE);
-	}
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
 
-	public int getCityadminID() {
-		return cityadminID;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setCityadminID(int cityadminID) {
-		this.cityadminID = cityadminID;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void wipTask(Report report) {
+        if (report.getState().equals(ReportState.REGULAR)) {
+            report.setState(ReportState.WORK_IN_PROGRESS);
+        }
+    }
+
+    public void closeWIPReport(Report report) {
+        if (report.getState().equals(ReportState.WORK_IN_PROGRESS)) {
+            report.setState(ReportState.CLOSED);
+        }
+    }
+
+    public void closeReport(Report report) {
+        if (report.getState().equals(ReportState.REGULAR) || report.getState().equals(ReportState.SUSPENDED)) {
+            report.setState(ReportState.CLOSED);
+        }
+
+    }
+
+    public void createTask(Task task, Report report) {
+        report.setTask(task);
+        report.setState(ReportState.TASK_AVAILABLE);
+    }
+
+    public int getCityadminID() {
+        return cityadminID;
+    }
+
+    public void setCityadminID(int cityadminID) {
+        this.cityadminID = cityadminID;
+    }
 
     /**
      * Let the CityAdmin choose for a preferred Worker
+     *
      * @param workersList HashMap of Worker ordered by DaysToComplete
      * @return The ID of the Worker chosen
      * @throws IOException
      */
-	public int chooseWorkerForTask(HashMap<Worker, ApplyRequest> workersList) throws IOException{
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		workersList.forEach((k, v) -> {
-			System.out.println("Choose one worker: ");
-			System.out.println(k.getCitizenID() + " - " + k.getName() + "(" + v.getDaysToComplete() + ")");
-		});
-		int opt = Integer.parseInt(in.readLine());
-		return opt;
-	}
+    public int chooseWorkerForTask(HashMap<Worker, ApplyRequest> workersList) throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        workersList.forEach((k, v) -> {
+            System.out.println("Choose one worker: ");
+            System.out.println(k.getCitizenID() + " - " + k.getName() + "(" + v.getDaysToComplete() + ")");
+        });
+        int opt = Integer.parseInt(in.readLine());
+        return opt;
+    }
+
+    public void addPrize(Prize prize, Board hisboard) {
+        hisboard.addPrize(prize);
+    }
+
 }
 	

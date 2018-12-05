@@ -2,9 +2,10 @@ package myCity;
 
 public enum TaskState {
 
-	WAITING_FOR_WORKER,
+    WAITING_FOR_WORKER,
     ASSIGNED,
     WAITING_FOR_CONFIRMS,
+    WORK_IN_PROGRESS,
     SOLVED;
-	
+
 }

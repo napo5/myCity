@@ -6,7 +6,8 @@ public class ReportManager {
 
     private ArrayList<Report> reportToCheck = new ArrayList<>();
 
-    public ReportManager() {}
+    public ReportManager() {
+    }
 
     public void addReport(Report report) {
         reportToCheck.add(report);

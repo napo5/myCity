@@ -5,221 +5,219 @@ import java.util.Scanner;
 
 public class Main {
 
-	@SuppressWarnings("resource")
-	public static void main(String[] args) {
+    @SuppressWarnings("resource")
+    public static void main(String[] args) {
 
-		BoardList boardlist = new BoardList();
-		int selection = 0;
+        BoardList boardlist = new BoardList();
+        int selection = 0;
 
-		boolean quit = false;
+        boolean quit = false;
 
-		do {
+        do {
 
-			printMenu();
+            printMenu();
 
-			System.out.println("Insert selection: ");
+            System.out.println("Insert selection: ");
 
-			Scanner in = new Scanner(System.in);
+            Scanner in = new Scanner(System.in);
 
-			selection = in.nextInt();
+            selection = in.nextInt();
 
-			switch (selection) {
+            switch (selection) {
 
-			case 1:
-				System.out.println("Insert name of the city: ");
-				Scanner inputcity = new Scanner(System.in);
-				String cityname = inputcity.nextLine();
+                case 1:
+                    System.out.println("Insert name of the city: ");
+                    Scanner inputcity = new Scanner(System.in);
+                    String cityname = inputcity.nextLine();
 
-				Board newBoard = new Board();
-				newBoard.setCity(cityname);
-				boardlist.addBoard(newBoard);
+                    Board newBoard = new Board();
+                    newBoard.setCity(cityname);
+                    boardlist.addBoard(newBoard);
 
-				System.out.println("Board created. ");
+                    System.out.println("Board created. ");
 
-				break;
+                    break;
 
-			case 2:
+                case 2:
 
-				boardlist.printBoards();
+                    boardlist.printBoards();
 
-				if (boardlist.getBoards().size() == 0) {
-					System.out.println("You have to create boards first !");
-					break;
+                    if (boardlist.getBoards().size() == 0) {
+                        System.out.println("You have to create boards first !");
+                        break;
 
-				}
+                    }
 
-				System.out.println("Insert board number to get into : ");
-				Scanner inputBoardList = new Scanner(System.in);
+                    System.out.println("Insert board number to get into : ");
+                    Scanner inputBoardList = new Scanner(System.in);
 
-				Board selectedBoard = boardlist.getBoards().get(inputBoardList.nextInt() - 1);
+                    Board selectedBoard = boardlist.getBoards().get(inputBoardList.nextInt() - 1);
 
-				System.out.println("Welcome to " + selectedBoard.getCity() + " board !");
+                    System.out.println("Welcome to " + selectedBoard.getCity() + " board !");
 
-				System.out.println("These are the reports of this city. To create one insert 0");
-				System.out.println("To view/insert comments on a report select relative number");
+                    System.out.println("These are the reports of this city. To create one insert 0");
+                    System.out.println("To view/insert comments on a report select relative number");
 
-				System.out.println("-0. Create a new report");
-				selectedBoard.printReports();
-				Scanner inputBoard = new Scanner(System.in);
+                    System.out.println("-0. Create a new report");
+                    selectedBoard.printReports();
+                    Scanner inputBoard = new Scanner(System.in);
 
-				int reportNumber = inputBoard.nextInt();
+                    int reportNumber = inputBoard.nextInt();
 
-				if (reportNumber == 0) {
+                    if (reportNumber == 0) {
 
-					selectedBoard.printCitizens();
+                        selectedBoard.printCitizens();
 
-					System.out.println("Select citizen making the report : ");
-					Scanner inputUserList = new Scanner(System.in);
+                        System.out.println("Select citizen making the report : ");
+                        Scanner inputUserList = new Scanner(System.in);
 
-					Citizen selectedUser = selectedBoard.getCitizens().get(inputUserList.nextInt() - 1);
-					
-					System.out.println("Insert title of the report : ");
-					Scanner inputTitle = new Scanner(System.in);
-					String newReportTitle = inputTitle.nextLine();
-					
+                        Citizen selectedUser = selectedBoard.getCitizens().get(inputUserList.nextInt() - 1);
 
-					System.out.println("Insert description of the report : ");
-					Scanner inputDescription = new Scanner(System.in);
-					String newReportDescription = inputDescription.nextLine();
+                        System.out.println("Insert title of the report : ");
+                        Scanner inputTitle = new Scanner(System.in);
+                        String newReportTitle = inputTitle.nextLine();
 
-					Report newReport = new Report(newReportTitle,newReportDescription, selectedUser);
 
-					selectedUser.sendReport(newReport,selectedBoard);
-				}
+                        System.out.println("Insert description of the report : ");
+                        Scanner inputDescription = new Scanner(System.in);
+                        String newReportDescription = inputDescription.nextLine();
 
-				else {
-					
-					Report selectedReport = selectedBoard.getReports().get(reportNumber-1);
-					System.out.println("Report nr. " + selectedReport.getReportID());
-					System.out.println("These are the commments of the report. To create one insert 0");
-					selectedReport.printComments();
-					
-					Scanner inputComments = new Scanner(System.in);
-					int selectionComments = inputComments.nextInt();
-					if(selectionComments==0) {
-						
-						
-						selectedBoard.printCitizens();
+                        Report newReport = new Report(newReportTitle, newReportDescription, selectedUser);
 
-						System.out.println("Select citizen making the report : ");
-						Scanner inputUserList = new Scanner(System.in);
-						Citizen selectedUser = selectedBoard.getCitizens().get(inputUserList.nextInt() - 1);
-						
-						System.out.println("Insert comment of the report : ");
-						Scanner inputDescription = new Scanner(System.in);
-						String inputCommentDescription = inputDescription.nextLine();
-						
-						Comment newcomment = new Comment(inputCommentDescription, selectedUser);
-						selectedUser.writeComment(newcomment,selectedReport);
-						System.out.println("Comment succesfully added.");
-					
-					}
+                        selectedUser.sendReport(newReport, selectedBoard);
+                    } else {
 
-				}
+                        Report selectedReport = selectedBoard.getReports().get(reportNumber - 1);
+                        System.out.println("Report nr. " + selectedReport.getReportID());
+                        System.out.println("These are the commments of the report. To create one insert 0");
+                        selectedReport.printComments();
 
-				break;
+                        Scanner inputComments = new Scanner(System.in);
+                        int selectionComments = inputComments.nextInt();
+                        if (selectionComments == 0) {
 
-			case 4:
 
-				if (boardlist.getBoards().size() == 0) {
-					System.out.println("You have to create boards first !");
-					break;
+                            selectedBoard.printCitizens();
 
-				}
+                            System.out.println("Select citizen making the report : ");
+                            Scanner inputUserList = new Scanner(System.in);
+                            Citizen selectedUser = selectedBoard.getCitizens().get(inputUserList.nextInt() - 1);
 
-				boardlist.printBoards();
+                            System.out.println("Insert comment of the report : ");
+                            Scanner inputDescription = new Scanner(System.in);
+                            String inputCommentDescription = inputDescription.nextLine();
 
-				System.out.println("Insert board number to get into : ");
-				Scanner inputCitizenBoard = new Scanner(System.in);
+                            Comment newcomment = new Comment(inputCommentDescription, selectedUser);
+                            selectedUser.writeComment(newcomment, selectedReport);
+                            System.out.println("Comment succesfully added.");
 
-				Board selectedCitizenBoard = boardlist.getBoards().get(inputCitizenBoard.nextInt() - 1);
+                        }
 
-				System.out.println("Insert name of the citizen: ");
-				Scanner inputName = new Scanner(System.in);
-				String name = inputName.nextLine();
+                    }
 
-				System.out.println("Insert surname of the citizen: ");
-				Scanner inputSurname = new Scanner(System.in);
-				String surname = inputSurname.nextLine();
+                    break;
 
-				System.out.println("Insert email of the citizen: ");
-				Scanner inputEmail = new Scanner(System.in);
-				String email = inputEmail.nextLine();
+                case 4:
 
-				LocalDate fillData = null;
+                    if (boardlist.getBoards().size() == 0) {
+                        System.out.println("You have to create boards first !");
+                        break;
 
-				Citizen newcitizen = new Citizen(name, surname, fillData, email);
+                    }
 
-				selectedCitizenBoard.addCitizen(newcitizen);
+                    boardlist.printBoards();
 
-				System.out.println("New citizen created and added to specific board. ");
+                    System.out.println("Insert board number to get into : ");
+                    Scanner inputCitizenBoard = new Scanner(System.in);
 
-				break;
+                    Board selectedCitizenBoard = boardlist.getBoards().get(inputCitizenBoard.nextInt() - 1);
 
-			case 5:
+                    System.out.println("Insert name of the citizen: ");
+                    Scanner inputName = new Scanner(System.in);
+                    String name = inputName.nextLine();
 
-				if (boardlist.getBoards().size() == 0) {
-					System.out.println("You have to create boards first !");
-					break;
+                    System.out.println("Insert surname of the citizen: ");
+                    Scanner inputSurname = new Scanner(System.in);
+                    String surname = inputSurname.nextLine();
 
-				}
+                    System.out.println("Insert email of the citizen: ");
+                    Scanner inputEmail = new Scanner(System.in);
+                    String email = inputEmail.nextLine();
 
-				boardlist.printBoards();
+                    LocalDate fillData = null;
 
-				System.out.println("Insert board number to get into : ");
-				Scanner inputCityAdminBoard = new Scanner(System.in);
+                    Citizen newcitizen = new Citizen(name, surname, fillData, email);
 
-				Board selectedCityAdminBoard = boardlist.getBoards().get(inputCityAdminBoard.nextInt() - 1);
+                    selectedCitizenBoard.addCitizen(newcitizen);
 
-				System.out.println("Insert name of the citizen: ");
-				Scanner inputNameCA = new Scanner(System.in);
-				String nameCA = inputNameCA.nextLine();
+                    System.out.println("New citizen created and added to specific board. ");
 
-				System.out.println("Insert surname of the citizen: ");
-				Scanner inputSurnameCA = new Scanner(System.in);
-				String surnameCA = inputSurnameCA.nextLine();
+                    break;
 
-				System.out.println("Insert email of the citizen: ");
-				Scanner inputEmailCA = new Scanner(System.in);
-				String emailCA = inputEmailCA.nextLine();
+                case 5:
 
-				LocalDate fillDataCA = null;
+                    if (boardlist.getBoards().size() == 0) {
+                        System.out.println("You have to create boards first !");
+                        break;
 
-				CityAdmin newCityAdmin = new CityAdmin(nameCA, surnameCA, fillDataCA, emailCA);
+                    }
 
-				selectedCityAdminBoard.addAdmin(newCityAdmin);
+                    boardlist.printBoards();
 
-				System.out.println("New city admin created and added to specific board. ");
+                    System.out.println("Insert board number to get into : ");
+                    Scanner inputCityAdminBoard = new Scanner(System.in);
 
-				break;
+                    Board selectedCityAdminBoard = boardlist.getBoards().get(inputCityAdminBoard.nextInt() - 1);
 
-			case 6:
-				System.out.println("Exit.");
-				quit = true;
-				break;
+                    System.out.println("Insert name of the citizen: ");
+                    Scanner inputNameCA = new Scanner(System.in);
+                    String nameCA = inputNameCA.nextLine();
 
-			default:
-				System.out.println("Invalid selection.");
+                    System.out.println("Insert surname of the citizen: ");
+                    Scanner inputSurnameCA = new Scanner(System.in);
+                    String surnameCA = inputSurnameCA.nextLine();
 
-			}
+                    System.out.println("Insert email of the citizen: ");
+                    Scanner inputEmailCA = new Scanner(System.in);
+                    String emailCA = inputEmailCA.nextLine();
 
-		} while (!quit);
-		System.out.println("Thanks for using myCity!");
+                    LocalDate fillDataCA = null;
 
-	}
+                    CityAdmin newCityAdmin = new CityAdmin(nameCA, surnameCA, fillDataCA, emailCA);
 
-	static void printMenu() {
-		System.out.println();
-		System.out.println();
-		System.out.println("Welcome to myCity");
-		System.out.println("-*- Main Menu");
-		System.out.println();
-		System.out.println("[1] CREATE A BOARD");
-		System.out.println("[2] DISPLAY BOARDS LIST / ENTER IN A BOARD");
-		System.out.println("[4] CREATE CITIZEN");
-		System.out.println("[5] CREATE CITY ADMIN");	
-		System.out.println("[6] QUIT");
-	}
+                    selectedCityAdminBoard.addAdmin(newCityAdmin);
+
+                    System.out.println("New city admin created and added to specific board. ");
+
+                    break;
+
+                case 6:
+                    System.out.println("Exit.");
+                    quit = true;
+                    break;
+
+                default:
+                    System.out.println("Invalid selection.");
+
+            }
+
+        } while (!quit);
+        System.out.println("Thanks for using myCity!");
+
+    }
+
+    static void printMenu() {
+        System.out.println();
+        System.out.println();
+        System.out.println("Welcome to myCity");
+        System.out.println("-*- Main Menu");
+        System.out.println();
+        System.out.println("[1] CREATE A BOARD");
+        System.out.println("[2] DISPLAY BOARDS LIST / ENTER IN A BOARD");
+        System.out.println("[4] CREATE CITIZEN");
+        System.out.println("[5] CREATE CITY ADMIN");
+        System.out.println("[6] QUIT");
+    }
 
 }
 

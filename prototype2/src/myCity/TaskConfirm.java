@@ -5,7 +5,7 @@ public class TaskConfirm {
     private Citizen author;
     private boolean confirm;
 
-    public TaskConfirm(Citizen author,boolean confirm){
+    public TaskConfirm(Citizen author, boolean confirm) {
         this.author = author;
         this.confirm = confirm;
     }
