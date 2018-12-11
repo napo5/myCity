@@ -40,6 +40,7 @@ public class TaskManager {
 		if (task.getNeededCheck() == task.getPositiveCheck().size()) {
 			task.getPositiveCheck().forEach((k , v) -> { k.setPoints(k.getPoints() + task.pointsToConfirm);
 			});
+			task.getPersonInCharge().setPoints(task.getPersonInCharge().getPoints() + task.pointsToWorker);
 			task.setState(TaskState.SOLVED);
 		} else if (task.getNeededCheck() == task.getNegativeCheck().size()){
 			task.getNegativeCheck().forEach((k , v) -> { k.setPoints(k.getPoints() + task.pointsToConfirm);

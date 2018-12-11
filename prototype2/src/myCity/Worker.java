@@ -18,6 +18,7 @@ public class Worker extends Citizen {
 	
 	public void applyForTask(Report report,int daysToComplete) {
 		ApplyRequest applyRequest = new ApplyRequest(daysToComplete);
+		//must control the exception if task is not present.
 		report.getTask().addApply(this, applyRequest);
 	}
 	
@@ -48,13 +49,12 @@ public class Worker extends Citizen {
 		BufferedReader br = new BufferedReader(new InputStreamReader(taskChoosen));
 		int taskID = Integer.parseInt(br.readLine());
 		for (Task task : this.confirmRequest) {
-			System.out.println(task.getTaskID());
 			if (task.getTaskID() == taskID && task.getPersonInCharge() == null)
 				task.setPersonInCharge(this);
 		}
 	}
 	
-	public void refuseTask() throws NumberFormatException, IOException {  //the cityAdmin should be notified.
+	public void refuseTask() throws NumberFormatException, IOException {  //the cityAdmin should be notified;
 		printConfirmRequest();
 		InputStream taskChoosen = System.in;
 		BufferedReader br = new BufferedReader(new InputStreamReader(taskChoosen));
