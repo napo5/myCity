@@ -12,7 +12,8 @@ public class Task {
 	private String description;
 	private int points;
 	private int exp;
-	public final static int pointsToConfirm = 3; //To be decided.
+	public final static int pointsToConfirm = 3; //To be decided;
+	public final static int pointsToWorker = 6; //Points to assign to the worker who did the task;
 	private TaskState state = TaskState.WAITING_FOR_WORKER;
 	private HashMap<Citizen,TaskDone> positiveCheck = new HashMap<Citizen,TaskDone>();
 	private HashMap<Citizen,TaskDone> negativeCheck = new HashMap<Citizen,TaskDone>();
@@ -113,7 +114,6 @@ public class Task {
 	}
 
 
-
 	public void printApplyList() {
 		for (HashMap.Entry<Worker, ApplyRequest> entry : applyList.entrySet()) {
 		    System.out.println(entry.getKey().getName()+" "+ entry.getKey().getSurname() +" : "+entry.getValue().getDaysToComplete());
@@ -121,6 +121,7 @@ public class Task {
 	}
 
 	public void addApply(Worker applicant,ApplyRequest request) {
+		//should controll that the workst isnt already present.
 		this.applyList.put(applicant, request);
 	}
 
