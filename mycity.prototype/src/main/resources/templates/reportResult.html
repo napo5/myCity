@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'reports')}">
+<head>
+<title>Spring Boot: javabeginnerstutorial.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:switch="${#lists.size(reports)}">
+<span th:case="'0'">
+<div class="alert alert-danger" role="alert">
+  NO REPORTS AVAILABLE!
+</div></span>
+<div th:case="*">
+<h2>Report List</h2>
+
+<table class="table table-striped">
+<tr>
+<th>ID Report</th>
+<th>Title</th>
+<th>Description</th>
+<th>Author</th>
+<th>Task Title</th>
+<th>Task Available</th>
+</tr>
+
+<tr th:each="report : ${reports}">
+<td th:text="${report.id}"></td>
+<td th:text="${report.title}"></td>
+<td th:text="${report.description}"></td>
+<td th:text="${report.author}"></td>
+<td th:text="${report.task}"></td>
+<td><span th:if="${report.task == null}"><a class="btn btn-default" th:href="@{/newTaskPage/} + ${report.id}">Create New Task</a></span>
+<span th:unless="${report.task == null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}">See the task</a></span>
+</td>
+</tr>
+</table>
+<a class="btn btn-default" th:href="${refer}">Back</a>
+<table class="table table-bordered">
+<tr th:each="report : ${reports}">
+<!--   <div class="card" style="width: 18rem;"> <!-- <img class="card-img-top" src="/resources/images/task.png" alt="Card image cap"> --> 
+<!--  <div class="card-header" th:text="${report.title}">
+    Titolo:
+  </div>
+  <div class="card-body">
+		Descrizione:<p class="card-text" th:text="${report.description}"></p> 
+		Autore: <p class="card-text" th:text="${report.author}"></p> 
+		Task: 
+		<span th:if="${report.task == null}"><a class="btn btn-default" th:href="@{/newTaskPage/} + ${report.id}">Create New Task</a></span>
+		<span th:unless="${report.task == null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}">See the task</a></span> 
+</div> </div> -->
+<div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <img src="/resources/images/buca.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h2 class="card-title">Special title treatment</h2>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer">Footer</div>
+</div>
+</tr>
+</table>
+</div>
+</div>
+</body>
+</html>
