@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'create report')}" >
+<head>
+<title>Spring Boot: javabeginnerstutorial.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>New Report</h1>
+<form action="#" th:action="@{/reportAdd}" th:object="${report}" method="post">
+<p>Title: <input type="text" th:field="*{title}"/></p>
+<p>Description: <input type="text" th:field="*{description}"/></p>
+
+<div th:action="@{/reportAdd}" th:object="${author}" > 
+<p>Author: <input type="text" th:field="*{name}"/></p>
+<p>Author age: <input type="text" th:field="*{age}"/></p>
+</div> 
+<p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+
+</form>
+</body>
+</html>

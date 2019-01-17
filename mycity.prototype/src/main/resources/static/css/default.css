@@ -1,0 +1,21 @@
+.navbar-nav {
+  	display: flex;
+  	flex-direction: row;
+  	padding-left: 0;
+  	margin-bottom: 0;
+  	list-style: none;
+  }
+.container:before{
+  content:none;
+}
+.btn{
+border-radius: 4px;
+}
+img{
+    max-width:450px;
+}
+.card{
+	max-width:600px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
