@@ -15,13 +15,19 @@
 <tr>
 <th>Id</th>
 <th>Name</th>
+<th>Surname</th>
+<th>Email</th>
 <th>Age</th>
+<th>Role</th>
 <th>See all reports</th>
 </tr>
 <tr th:each="person : ${persons}">
 <td th:text="${person.id}"></td>
 <td th:text="${person.name}"></td>
-<td th:text="${person.Age}"></td>
+<td th:text="${person.surname}"></td>
+<td th:text="${person.email}"></td>
+<td th:text="${person.age}"></td>
+<td th:text="${person.role}"></td>
 <td><a class="btn btn-default" th:href="@{/person/} + ${person.name}">Reports List</a></td>
 </tr>
 </table>

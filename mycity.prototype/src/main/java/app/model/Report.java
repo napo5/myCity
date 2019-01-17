@@ -1,5 +1,10 @@
 package app.model;
 
+
+import java.text.SimpleDateFormat;
+
+
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="REPORT")
@@ -22,6 +28,8 @@ public class Report {
 	private String title;
 	@Column(name = "DESCRIPTION")
 	private String description;
+	@Column(name = "DATE")
+	private String date = Date();
 	@ManyToOne
 	@JoinColumn(name = "PERSON_ID")
 	private Person author;
@@ -32,18 +40,20 @@ public class Report {
 	@OneToOne(fetch = FetchType.LAZY,cascade =  CascadeType.ALL, mappedBy = "report")
 	private Task task;
 	
-	public Report() {
-		
-	}
-	public Report(String title, String description) {
-		this.title=title;
-		this.description=description;
-	}
 	public Long getId() {
 		return id;
 	}
+	private String Date() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String dateString = format.format(new Date());
+		return dateString;
+	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getDate() {
+		return date;
 	}
 	public String getTitle() {
 		return title;

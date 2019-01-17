@@ -1,5 +1,7 @@
 <!doctype html>
-<html th:fragment="layout (template, menu)">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  th:fragment="layout (template, menu)">
 
   <head>		
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -15,6 +17,7 @@
       <link rel="stylesheet" th:href="@{/resources/css/layout.css}"/>
   	<link href="/css/default.css" rel="stylesheet"/>
 		
+	
   </head>
 
 <body>
@@ -89,6 +92,11 @@
   <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
   <script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
   <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <script type ="text/javascript">
+  function ciao() {
+	return alert("ciao");
+	}
+</script>
 
 </body>
 

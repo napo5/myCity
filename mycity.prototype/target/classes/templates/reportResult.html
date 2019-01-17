@@ -20,6 +20,7 @@
 <th>Description</th>
 <th>Author</th>
 <th>Task Title</th>
+<th>Data</th>
 <th>Task Available</th>
 </tr>
 
@@ -29,6 +30,7 @@
 <td th:text="${report.description}"></td>
 <td th:text="${report.author}"></td>
 <td th:text="${report.task}"></td>
+<td th:text="${report.date}"></td>
 <td><span th:if="${report.task == null}"><a class="btn btn-default" th:href="@{/newTaskPage/} + ${report.id}">Create New Task</a></span>
 <span th:unless="${report.task == null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}">See the task</a></span>
 </td>
@@ -49,20 +51,27 @@
 		<span th:unless="${report.task == null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}">See the task</a></span> 
 </div> </div> -->
 <div class="card">
-  <div class="card-header">
-    Featured
+  <div class="card-header" >
+    <p th:text="${report.date}"></p>
   </div>
   <img src="/resources/images/buca.png" class="card-img-top" alt="...">
   <div class="card-body">
-    <h2 class="card-title">Special title treatment</h2>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <h2 class="card-title" th:text="${report.title}">Special title treatment</h2>
+    <p class="card-text" th:text="${report.description}">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-  <div class="card-footer">Footer</div>
+  <div class="card-footer" th:text="${report.author}">Footer</div>
 </div>
 </tr>
 </table>
 </div>
 </div>
+<script type="text/javascript">
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+</script>
 </body>
 </html>

@@ -22,8 +22,17 @@ public class Person {
 	@Column(name = "NAME")
 	private String name;
 	
+	@Column(name = "SURNAME")
+	private String surname;
+	
+	@Column(name = "EMAIL")
+	private String email;
+	
 	@Column(name = "AGE")
 	private int age;
+	
+	@Column(name = "ROLE")
+	private String role;
 
 	@OneToMany(mappedBy="author", cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Report.class)
 	    private List<Report> reports;
@@ -36,12 +45,36 @@ public class Person {
 	public Person() {
 	}
 
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getName() {
