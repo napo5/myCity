@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'reports')}">
+<head>
+<title>Spring Boot: javabeginnerstutorial.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h2>Report Specification</h2>
+
+<div class="card">
+  <div class="card-header" >
+    <p th:text="${report.date}"></p>
+  </div>
+  <img src="/resources/images/buca.png" class="card-img-top" alt="...">
+  <div class="card-body">
+      	<span th:if="${report.task != null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}" style="float:right">See Task</a></span>
+    <h2 class="card-title" th:text="${report.title}">Special title treatment</h2>
+    
+    <p class="card-text" th:text="${report.description}">With supporting text below as a natural lead-in to additional content.</p>
+  <!--  
+<div th:each="comment : ${comments}">  
+    <div class="card">
+  		<h5 class="card-header">Featured</h5>
+  		<div class="card-body">
+    		<p class="card-text" th:text="${comment.description}"></p>
+  		</div>
+	</div>
+</div>
+-->
+
+<div th:each="comment,iterState : ${comments}">
+	<div class="card">
+  		<h5 class="card-header">Featured</h5>
+  		<div class="card-body">
+    		<p class="card-text" th:text="${comment.description}"></p>
+  		</div>
+	</div>	
+</div>
+
+  </div>
+  <div class="card-footer">
+  <!-- 
+	<form action="#" th:action="@{/addComment/} + ${report.id}" method="get">
+<textarea  id="comments" name="comment" rows="3" cols="70">Write...</textarea>
+	<div>
+	<input type="submit" value="Comment" style="height: 25px;">
+	</div>
+	</form> -->
+	<form class="customerForm"   method="post">
+		<div class="form-group">
+			<textarea  class="description" id="description" name="description" rows="3" cols="70">Write...</textarea>
+		</div>
+		<div class="form-group">
+			<textarea  class="id" id="id" name="id" rows="3" cols="70" th:text="${report.id}" style="display:none">id</textarea>
+		</div>
+		
+		
+		<div class="postResultDiv" id="postResultDiv">
+		</div>
+		<div>
+			<input type="submit" value="Comment" style="height: 25px;">
+		</div>  
+	</form>
+	
+	</div>
+	
+<div class="card-footer" align="right" th:text="${report.author}">Footer</div>
+</div>
+
+</body>
+</html>

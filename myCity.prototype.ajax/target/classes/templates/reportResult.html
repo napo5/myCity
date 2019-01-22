@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'reports')}">
+<head>
+<title>Spring Boot: javabeginnerstutorial.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+<body>
+<div th:switch="${#lists.size(reports)}">
+<span th:case="'0'">
+<div class="alert alert-danger" role="alert">
+  NO REPORTS AVAILABLE!
+</div></span>
+<div th:case="*" id="result">
+<h2>Report List (CITY ADMIN ONLY)</h2>
+
+<table class="table table-striped">
+<tr>
+<th>ID Report</th>
+<th>Title</th>
+<th>Description</th>
+<th>Author</th>
+<th>Task Title</th>
+<th>Data</th>
+<th>Task Available</th>
+</tr>
+
+<tr th:each="report : ${reports}">
+<td th:text="${report.id}"></td>
+<td th:text="${report.title}"></td>
+<td th:text="${report.description}"></td>
+<td th:text="${report.author}"></td>
+<td th:text="${report.task}"></td>
+<td th:text="${report.date}"></td>
+<td><span th:if="${report.task == null}"><a class="btn btn-default" th:href="@{/newTaskPage/} + ${report.id}">Create New Task</a></span>
+<span th:unless="${report.task == null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}">See the task</a></span>
+</td>
+</tr>
+</table>
+<a class="btn btn-default" th:href="${refer}">Back</a>
+
+<table class="table table-bordered">
+<h2>Report List(CITIZENS)</h2>
+
+
+
+<tr th:each="report : ${reports}">
+
+<div class="card" style="width: 30rem; float:right;margin-top:0px;margin-right:25px;height:31rem;">
+  <div class="card-body">
+    <h5 class="card-title">
+    <!-- <input type="text" th:value="${report.views}" class="field left" readonly> Visite -->
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="roundthumb" data-i18n_like=" " data-ef_voting="push" data-white_label="true" data-identifier="votatoreeeeee" data-counter_zero_show="true"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header" >
+    <p th:text="${report.date}"></p>
+  </div>
+  <img src="/resources/images/buca.png" class="card-img-top" alt="...">
+  <div class="card-body">
+  	<span th:if="${report.task != null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}" style="float:right;margin-left:10px">See Task</a></span>
+    <a class="btn btn-default" th:href="@{/seeReport/} + ${report.id}" style="float:right">Vai al Report</a>
+    <h2 class="card-title" th:text="${report.title}">Special title treatment</h2>
+    
+    <p class="card-text" th:text="${report.description}">With supporting text below as a natural lead-in to additional content.</p>
+  <!--  
+<div th:each="comment : ${comments}">  
+    <div class="card">
+  		<h5 class="card-header">Featured</h5>
+  		<div class="card-body">
+    		<p class="card-text" th:text="${comment.description}"></p>
+  		</div>
+	</div>
+</div>
+-->
+										
+<div th:each="comment,iterState : ${report.comments}" th:unless="${iterState.index > 2}">
+	<div class="card">
+  		<h5 class="card-header">Autore del commento</h5>
+  		<div class="card-body">
+    		<p class="card-text" th:text="${comment.description}"></p>
+  		</div>
+	</div>	
+</div>
+
+  </div>
+  <!--  SENZA AJAX PER MANDARE I COMMENTI è QUESTO -->
+ <!--  <div class="card-footer">
+  
+ 	<form action="#" th:action="@{/addComment/} + ${report.id}" method="get">
+<textarea  id="comments" name="comment" rows="3" cols="70">Write...</textarea>
+	<div>
+	<input type="submit" value="Comment" style="height: 25px;">
+	</div>
+	</form>			
+	</div>    -->
+	<!--  PROVA AJAXXX -->
+	
+	<div class="card-footer">
+	<!--  -->
+	<form class="customerForm"   method="post">
+		<div class="form-group">
+			<textarea  class="description" id="description" name="description" rows="3" cols="70">Write...</textarea>
+		</div>
+		<div class="form-group">
+			<textarea  class="id" id="id" name="id" rows="3" cols="70" th:text="${report.id}" style="display:none">id</textarea>
+		</div>
+		
+		
+		<div class="postResultDiv" id="postResultDiv">
+		</div>
+		<div>
+			<input type="submit" value="Comment" style="height: 25px;">
+		</div>  
+	</form>
+	<!--  -->
+     </div>
+	
+	<!-- FINE PROVA AJAXXX -->
+<div class="card-footer" align="right" th:text="${'Autore: ' + report.author.name}">Footer</div>
+</div>
+
+
+
+</tr>
+
+</table>
+</div>
+</div>
+	
+
+</body>
+</html>

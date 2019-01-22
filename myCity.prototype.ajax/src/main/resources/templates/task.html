@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'reports')}">
+<head>
+<title>Spring Boot: javabeginnerstutorial.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h2>Task Description</h2>
+<table class="table table-striped">
+<tr>
+<th>Id</th>
+<th>Title</th>
+<th>Description</th>
+<th>Points</th>
+<th>Experience</th>
+</tr>
+<tr>
+<td th:text="${task.id}"></td>
+<td th:text="${task.title}"></td>
+<td th:text="${task.description}"></td>
+<td th:text="${task.points}"></td>
+<td th:text="${task.exp}"></td>
+</tr>
+</table>
+<a class="btn btn-default" th:href="@{/reportList}">Back</a>
+</body>
+</html>
