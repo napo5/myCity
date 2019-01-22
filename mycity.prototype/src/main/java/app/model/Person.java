@@ -37,9 +37,12 @@ public class Person {
 	@OneToMany(mappedBy="author", cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Report.class)
 	    private List<Report> reports;
 
-	public Person(String name, int age) {
+	public Person(String name, String surname, String email, int age, String role) {
 		this.name = name;
+        this.surname = surname;
+        this.email = email;
 		this.age = age;
+        this.role = role;
 	}
 	
 	public Person() {
