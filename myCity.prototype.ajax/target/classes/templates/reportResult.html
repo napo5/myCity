@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'reports')}">
 <head>
-<title>Spring Boot: javabeginnerstutorial.com</title>
+<meta name="theme-color" content="#db5945">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
+  
 </head>
 <body>
 <div th:switch="${#lists.size(reports)}">
@@ -28,7 +28,7 @@
 <tr th:each="report : ${reports}">
 <td th:text="${report.id}"></td>
 <td th:text="${report.title}"></td>
-<td th:text="${report.description}"></td>
+<td th:text="${report.description}" style="max-width: 200px; overflow:hidden"></td>
 <td th:text="${report.author}"></td>
 <td th:text="${report.task}"></td>
 <td th:text="${report.date}"></td>
@@ -39,37 +39,52 @@
 </table>
 <a class="btn btn-default" th:href="${refer}">Back</a>
 
-<table class="table table-bordered">
+<!-- <table class="table table-bordered"> -->
 <h2>Report List(CITIZENS)</h2>
 
-
+<div class="card" id="card-special" style="display:none;width: 30rem; float:right;margin-top:0px;margin-left:25px;height:31rem;">  
+    <!-- <input type="text" th:value="${report.views}" class="field left" readonly> Visite -->
+	 	<div class="card-header" style="text-align: center; overflow:auto;">
+	 	<p> I tuoi ultimi commenti: </p>
+	 	</div>
+	 	<div id="getResultDiv" style="padding:15px 10px 20px 10px">
+	        <ul class="list-group" id="lastcomment-list">
+	    	</ul>
+    	</div>  
+</div>
 
 <tr th:each="report : ${reports}">
-
-<div class="card" style="width: 30rem; float:right;margin-top:0px;margin-right:25px;height:31rem;">
-  <div class="card-body">
-    <h5 class="card-title">
+<!-- ULTIMI COMMENTI, CARD COME ERA PRIMA -->
+<!--  <div class="card" id="card-special" style="display:none;width: 30rem; float:right;margin-top:0px;margin-right:25px;height:31rem;"> -->
+  
+    
     <!-- <input type="text" th:value="${report.views}" class="field left" readonly> Visite -->
-
-<!-- LikeBtn.com BEGIN -->
-<span class="likebtn-wrapper" data-theme="roundthumb" data-i18n_like=" " data-ef_voting="push" data-white_label="true" data-identifier="votatoreeeeee" data-counter_zero_show="true"></span>
-<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
-<!-- LikeBtn.com END -->
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+	<!-- 	<div id="getResultDiv" style="padding:20px 10px 20px 50px">
+		<p> Ultimi commenti: </p>
+	        <ul class="list-group">
+	    	</ul>
+    	</div>
+    
+  
+</div>   -->
 
 <div class="card">
   <div class="card-header" >
     <p th:text="${report.date}"></p>
   </div>
-  <img src="/resources/images/buca.png" class="card-img-top" alt="...">
+  <!-- <img src="/resources/images/buca.png" class="card-img-top" alt="..."> -->
   <div class="card-body">
+  <span th:if="${report.image != ''}">
+  <img th:src="${report.image}" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
+   </span>
+   <span th:if="${report.image == ''}">
+   <img src="http://i64.tinypic.com/10z44g4.png" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
+   </span>
+   <br>
   	<span th:if="${report.task != null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}" style="float:right;margin-left:10px">See Task</a></span>
     <a class="btn btn-default" th:href="@{/seeReport/} + ${report.id}" style="float:right">Vai al Report</a>
-    <h2 class="card-title" th:text="${report.title}">Special title treatment</h2>
-    
+    <h2 class="card-title" th:text="${report.title}" >Special title treatment</h2>
+    <br>
     <p class="card-text" th:text="${report.description}">With supporting text below as a natural lead-in to additional content.</p>
   <!--  
 <div th:each="comment : ${comments}">  
@@ -104,7 +119,7 @@
 	</div>    -->
 	<!--  PROVA AJAXXX -->
 	
-	<div class="card-footer">
+	<div class="card-footer" >
 	<!--  -->
 	<form class="customerForm"   method="post">
 		<div class="form-group">
@@ -132,10 +147,9 @@
 
 </tr>
 
-</table>
+<!--  </table> -->
 </div>
 </div>
-	
 
 </body>
 </html>

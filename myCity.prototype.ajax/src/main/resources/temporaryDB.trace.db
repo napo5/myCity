@@ -1451,3 +1451,21 @@ SELECT * FROM COMMENT c WHERE LOWER(c.report) = LOWER(?) [42122-197]
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+2019-01-25 14:52:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(255)": "'Write..dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd... (419)"; SQL statement:
+insert into report (person_id, date, description, image, title, views, id) values (?, ?, ?, ?, ?, ?, ?) [22001-197]
+2019-01-25 14:53:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(255)": "'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd... (309)"; SQL statement:
+insert into report (person_id, date, description, image, title, views, id) values (?, ?, ?, ?, ?, ?, ?) [22001-197]
+2019-01-25 14:56:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(255)": "'ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd... (468)"; SQL statement:
+insert into report (person_id, date, description, image, title, views, id) values (?, ?, ?, ?, ?, ?, ?) [22001-197]
+2019-01-25 14:56:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(255)": "'Write...ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd... (320)"; SQL statement:
+insert into report (person_id, date, description, image, title, views, id) values (?, ?, ?, ?, ?, ?, ?) [22001-197]
+2019-01-25 14:57:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(255)": "'Write...ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd... (320)"; SQL statement:
+insert into report (person_id, date, description, image, title, views, id) values (?, ?, ?, ?, ?, ?, ?) [22001-197]
+2019-01-25 14:58:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "DESCRIPTION VARCHAR(255)": "'Write...ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd... (320)"; SQL statement:
+insert into report (person_id, date, description, image, title, views, id) values (?, ?, ?, ?, ?, ?, ?) [22001-197]

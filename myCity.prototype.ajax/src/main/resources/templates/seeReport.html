@@ -11,8 +11,14 @@
   <div class="card-header" >
     <p th:text="${report.date}"></p>
   </div>
-  <img src="/resources/images/buca.png" class="card-img-top" alt="...">
   <div class="card-body">
+  <span th:if="${report.image != ''}">
+  <img th:src="${report.image}" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
+   </span>
+   <span th:if="${report.image == ''}">
+   <img src="http://i64.tinypic.com/10z44g4.png" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
+   </span>
+   <br>
       	<span th:if="${report.task != null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}" style="float:right">See Task</a></span>
     <h2 class="card-title" th:text="${report.title}">Special title treatment</h2>
     

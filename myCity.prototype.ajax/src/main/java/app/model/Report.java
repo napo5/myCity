@@ -29,11 +29,12 @@ public class Report {
 	private Long id;
 	@Column(name = "TITLE")
 	private String title;
-	@Column(name = "DESCRIPTION")
+	@Column(name = "DESCRIPTION", columnDefinition ="VARCHAR(1000)")
 	private String description;
 	@Column(name = "DATE")
 	private String date = Date();
-	
+	@Column(name = "IMAGE")
+	private String image = "";
 	@Column(name = "VIEWS")
 	private int views = 0;
 	
@@ -90,6 +91,12 @@ public class Report {
 	}
 	
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public List<Comment> getComments() {
 		return comments;
 	}

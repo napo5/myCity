@@ -20,16 +20,16 @@ public class Person {
 	private Long id;
 	
 	@Column(name = "NAME")
-	private String name;
+	private String name = "";
 	
 	@Column(name = "SURNAME")
-	private String surname;
+	private String surname = "";
 	
 	@Column(name = "EMAIL")
-	private String email;
+	private String email = "";
 	
 	@Column(name = "AGE")
-	private int age;
+	private int age = 0;
 	
 	@Column(name = "POINTS")
 	private int points=0;
@@ -38,7 +38,7 @@ public class Person {
 	private int exp=0;
 	
 	@Column(name = "ROLE")
-	private String role;
+	private String role = "";
 
 	@OneToMany(mappedBy="author", cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Report.class)
 	    private List<Report> reports;

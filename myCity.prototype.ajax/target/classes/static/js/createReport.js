@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 	
 	// SUBMIT FORM
-    $('.customerForm').submit(function(event) {
+    $('#formReport').submit(function(event) {
 		// Prevent the form from submitting via the browser.
 		event.preventDefault();
 		console.log(event);
@@ -12,16 +12,17 @@ $( document ).ready(function() {
     function ajaxPost(){
     	// PREPARE FORM DATA
     	var formData = {
-    		description : event.target[0].value,
-    		id : event.target[1].value
+    		title : $('#titoloReport').val(),
+    		description : $('#descrizioneReport').val(),
+    		name : $('#autoreReport').val(),
+    		image : $('#immagineReport').val()
     	}
-    	
     	
     	// DO POST
     	$.ajax({
 			type : "POST",
 			contentType : "application/json",
-			url : "/api/customer/save/" + formData.id ,
+			url : "/api/customer/createReport" ,
 			data : JSON.stringify(formData),
 			dataType : 'json',
 			success : function(result) {
@@ -42,6 +43,13 @@ $( document ).ready(function() {
     }
     
     function resetData(){
-    	event.target[0].value = "Messaggio inviato!";
+    	$("#resultDiv").html("<p style='background-color:#888E90; color:white; padding:20px 20px 20px 20px; max-width:500px;'>" + 
+				"Il Report è stato aggiunto correttamente! <br>" +
+				"Titolo report = " + 
+				$('#titoloReport').val() + "<br>" + "Descrizione report = " + $('#descrizioneReport').val() + "<br>" + "URL = " + $('#immagineReport').val() + "</p>");
+    	$('#titoloReport').val("");
+    	$('#immagineReport').val("");
+    	$('#descrizioneReport').val("");
+    	$('#autoreReport').val("");
     }
 })

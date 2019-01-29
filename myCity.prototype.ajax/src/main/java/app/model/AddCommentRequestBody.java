@@ -1,16 +1,13 @@
 package app.model;
 
-public class Proto {
+public class AddCommentRequestBody {
  private String description;
  private String id;
  
- 
- 
- public Proto() {
-	 
+ public AddCommentRequestBody() {	 
  }
  
- public Proto(String description, String id) {
+ public AddCommentRequestBody(String description, String id) {
 	 this.description = description;
 	 this.id = id;
  }

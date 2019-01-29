@@ -76,5 +76,8 @@ public class PersonController {
 		model.addAttribute("person",personService.getPerson(personName));
 		return "profile";
 		}
-	
+	@RequestMapping(value ="/offline", method = RequestMethod.GET)
+	public String offline() {
+		return "offline";
+	}
 }
