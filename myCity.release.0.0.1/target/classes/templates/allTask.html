@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'profile')}" >
+<head>
+<title>Spring Boot: javabeginnerstutorial.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:if="${not #lists.isEmpty(tasks)}">
+<h2>Task List</h2>
+<form action="#" th:action="@{/allTask}" th:object="${task}" method="get">
+<table class="table table-striped">
+<tr>
+<th>Title</th>
+<th>Description</th>
+<th>Points</th>
+<th>Experience</th>
+<th>Report</th>
+<th>State</th>
+
+
+</tr>
+
+<tr th:each="task : ${tasks}">
+<td th:text="${task.title}"></td>
+<td th:text="${task.description}"></td>
+<td th:text="${task.points}"></td>
+<td th:text="${task.exp}"></td>
+<td th:text="${task.report}"></td>
+<td th:text="${task.state}"></td>
+</tr>
+</table>
+</form>
+</div>
+<div th:if="${#lists.isEmpty(tasks)}">
+<div class="alert alert-danger" role="alert">
+  NO TASKS AVAILABLE!
+</div>
+</div>
+</body>
+</html>
