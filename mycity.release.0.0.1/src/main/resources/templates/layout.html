@@ -1,0 +1,157 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  th:fragment="layout (template, menu)">
+
+  <head>		
+
+<!-- prova --> 
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#6db33f"/>
+    
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon.png}">
+
+    <title>My City</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
+  
+      <link rel="stylesheet" type="text/css"  th:href="@{/resources/css/layout.css}"/>	
+
+	  <link href="/css/default.css" rel="stylesheet"/>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="manifest" href="/manifest.json">
+
+
+	  <script src="/js/addComment.js"></script>
+	  <script src="/js/createReport.js"></script>
+	  <script src="/js/applyForTask.js"></script>
+	  <script src="/js/acceptRefuseTask.js"></script>
+	  <script src="/js/sendTaskRequest.js"></script>
+	  <script src="/js/assignPoints.js"></script>
+	  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
+
+<script>
+function myFunction() {
+  var x = document.getElementById("menu");
+  if (x.className === "nav navbar-nav navbar-right") {
+	  x.className += " responsive";
+  } else {
+    x.className = "nav navbar-nav navbar-right";
+  }
+}
+</script>
+  </head>
+
+<body>
+
+<!-- navbar navbar-default navbar-static-top  style="position:fixed;top: 0;width:100%;overflow: hidden;" -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="position:fixed;top: 0;width:100%;overflow: hidden;">
+       
+      <div class="container" style="flex-wrap: nowrap;">
+         
+          <div class="navbar-header" >
+             
+              <a class="navbar-brand" th:href="@{/reportList}"><span></span></a>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar" onclick="myFunction()">
+                  <span class="sr-only"><os-p>Toggle navigation</os-p></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+          
+       </div>
+          
+          
+              <div class="navbar-collapse collapse" id="main-navbar" style="margin-right:0px">
+              <ul class="nav navbar-nav navbar-right" id="menu">
+  
+                  <li th:fragment="menuItem (path,active,title,glyph,text)" class="active" th:class="${active==menu ? 'active' : ''}">
+                      <a th:href="@{__${path}__}" th:title="${title}">
+                        <span th:class="'glyphicon  glyphicon-'+${glyph}" class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                        <span th:text="${text}">Template</span>
+                      </a>
+                  </li>
+  <!--  
+                  <li th:replace="::menuItem ('/','home','home page','home','Home')">
+                      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                      <span>Home</span>
+                  </li>
+ --> 
+                  <li th:replace="::menuItem ('/peopleList','people','list of all the people','search','People')">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      <span>People</span>
+                  </li>
+  
+                  <li th:replace="::menuItem ('/reportList','reports','list of all reports','th-list','Reports')">
+                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                      <span>Reports</span>
+                  </li>
+                  <!--  glyphicon glyphicon-pencil -->
+                  <li th:replace="::menuItem ('/report','create report','create a new report','th-list','Create report')">
+                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                      <span>Create report</span>
+                  </li>
+  		<!-- glyphicon glyphicon-user -->
+  				   <li th:replace="::menuItem ('/profile','profile','See your profile','th-list','Profile')">
+                      <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                      <span>Profile</span>
+                  </li>
+  				<!-- glyphicon glyphicon-envelope -->
+  					<li th:replace="::menuItem ('/messages','messages','See your messages','th-list','My messages')">
+                      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                      <span>Messages</span>
+                   </li>
+  
+           		  <li th:replace="::menuItem ('/manageLogout','logout','Logout from your account','warning-sign','Logout')">
+                      <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                      <span>Logout</span>
+                  </li>       
+                        				
+              </ul>
+          </div>
+         
+      </div>
+  </nav>
+  <div class="container-fluid" style="margin-top:80px">
+      <div class="container xd-container">
+          <th:block th:include="${template}"/>
+        <br/>
+        <br/>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <img src="../static/resources/images/spring-pivotal-logo.png" th:src="@{/resources/images/spring-pivotal-logo.png}"
+                alt="Sponsored by Pivotal"/></div>
+          </div>
+        </div>
+      </div>
+  </div>
+<div class="container-fluid" id="homeScreenDiv" style="display: none; flex-wrap: wrap; justify-content:center">
+<div>
+<p style="float: left;color:white;">Rimani aggiornato sulla tua Città!</p>
+</div>
+<div>
+<button type="button" class="addButton" id="btnAdd" style="position:relative;float:right;">AGGIUNGI</button>
+</div>
+</div>
+
+<!--   <script th:src="@{/webjars/jquery/jquery.min.js}"></script> --> 
+  <script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+ <!--  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> --> 
+<script src="/js/homeScreen.js"></script>
+<script>
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('/sw.js')
+           .then(function() { console.log("Service Worker Registered"); });
+}
+</script>
+
+</body>
+
+</html>

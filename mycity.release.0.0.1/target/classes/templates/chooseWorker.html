@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'report')}">
+<head>
+<title>Spring Boot: javabeginnerstutorial.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h2>Worker Application List</h2>
+<div style="overflow-x:auto;">
+<table class="table table-striped">
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Surname</th>
+<th>Email</th>
+<th>Role</th>
+<th>Points</th>
+<th>Exp</th>
+<th>His Reports</th>
+<th>Assign Worker</th>
+<th></th>
+<th></th>
+</tr>
+<tr th:each="person : ${person}">
+<form class="sendTaskRequest" id="sendTaskRequest"  method="post">
+<td th:text="${person.id}"></td>
+<td th:text="${person.name}"></td>
+<td th:text="${person.surname}"></td>
+<td th:text="${person.email}"></td>
+<td th:text="${person.role}"></td>
+<td th:text="${person.points}"></td>
+<td th:text="${person.exp}"></td>
+<td><a class="btn btn-default" th:href="@{/person/} + ${person.name}">Reports List</a></td>
+<td><button class="btn btn-default" type="submit" value="Send Request">Send Request</button></td>
+<td><textarea class="id" id="idPerson" name="id" rows="3" cols="70" th:text="${person.id}" style="display:none;">id</textarea></td>
+<td><textarea class="id" id="idReport" name="id" rows="3" cols="70" th:text="${idReport}" style="display:none;">id</textarea></td>
+</form>
+</tr>
+</table>
+<div id="sendTaskRequestDiv"></div>
+</div>
+<a class="btn btn-default" th:href="${refer}">Back</a>
+</body>
+</html>
