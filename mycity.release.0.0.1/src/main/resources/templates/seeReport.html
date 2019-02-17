@@ -28,19 +28,9 @@
 	<div class="form-group">
 		<textarea class="id" id="idReportCandidature" name="id" rows="3" cols="70" th:text="${report.id}" style="display:none">id</textarea>
 	</div>
-    <h2 class="card-title" th:text="${report.title}">Special title treatment</h2>
+    <h2 class="card-title" th:text="${report.title}"></h2>
     
-    <p class="card-text" th:text="${report.description}">With supporting text below as a natural lead-in to additional content.</p>
-  <!--  
-<div th:each="comment : ${comments}">  
-    <div class="card">
-  		<h5 class="card-header">Featured</h5>
-  		<div class="card-body">
-    		<p class="card-text" th:text="${comment.description}"></p>
-  		</div>
-	</div>
-</div>
--->
+    <p class="card-text" th:text="${report.description}"></p>
 
 <div th:each="comment,iterState : ${comments}">
 	<div class="card">
@@ -54,16 +44,9 @@
   </div>
   </form>
   <div class="card-footer">
-  <!-- 
-	<form action="#" th:action="@{/addComment/} + ${report.id}" method="get">
-<textarea  id="comments" name="comment" rows="3" cols="70">Write...</textarea>
-	<div>
-	<input type="submit" value="Comment" style="height: 25px;">
-	</div>
-	</form> -->
 	<form class="customerForm"   method="post">
 		<div class="form-group">
-			<textarea  class="description" id="description" name="description" rows="3" cols="70">Write...</textarea>
+			<textarea  class="description" id="description" name="description" rows="3" cols="70" required></textarea>
 		</div>
 		<div class="form-group">
 			<textarea  class="id" id="id" name="id" rows="3" cols="70" th:text="${report.id}" style="display:none">id</textarea>

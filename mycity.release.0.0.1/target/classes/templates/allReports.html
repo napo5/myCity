@@ -30,7 +30,7 @@
 
 <tr th:each="report : ${reports}">
 <td th:text="${report.id}"></td>
-<td th:text="${report.title}"></td>
+<td th:text="${report.title}" style="max-width: 200px; overflow:hidden"></td>
 <td th:text="${report.description}" style="max-width: 200px; overflow:hidden"></td>
 <td th:text="${report.author.name + ' ' + report.author.surname}"></td>
 <td th:text="${report.task}"></td>
@@ -46,7 +46,7 @@
 
 
 <!-- <table class="table table-bordered"> -->
-<h2>Report List(CITIZENS)</h2>
+<h2>Report List</h2>
 <!-- width:30rem; -->
 <div class="card" id="card-special" style="display:none; width: 30rem;float:right;margin-top:0px;margin-left:25px;height:31rem;">  
     <!-- <input type="text" th:value="${report.views}" class="field left" readonly> Visite -->
@@ -60,26 +60,11 @@
 </div>
 
 <tr th:each="report : ${reports}">
-<!-- ULTIMI COMMENTI, CARD COME ERA PRIMA -->
-<!--  <div class="card" id="card-special" style="display:none;width: 30rem; float:right;margin-top:0px;margin-right:25px;height:31rem;"> -->
-  
-    
-    <!-- <input type="text" th:value="${report.views}" class="field left" readonly> Visite -->
-	<!-- 	<div id="getResultDiv" style="padding:20px 10px 20px 50px">
-		<p> Ultimi commenti: </p>
-	        <ul class="list-group">
-	    	</ul>
-    	</div>
-    
-  
-</div>   -->
-
 <div class="card">
   <div class="card-header" >
     <p style="display: inline-block;" th:text="${report.date}"></p>
     <p style="display: inline-block; float:right;" th:text="${'Stato: ' + report.state}"></p>
   </div>
-  <!-- <img src="/resources/images/buca.png" class="card-img-top" alt="..."> -->
   <div class="card-body">
   <span th:if="${report.image != ''}">
   <img th:src="${report.image}" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
@@ -93,16 +78,6 @@
     <h2 class="card-title" th:text="${report.title}" >Special title treatment</h2>
     <br>
     <p class="card-text" th:text="${report.description}">With supporting text below as a natural lead-in to additional content.</p>
-  <!--  
-<div th:each="comment : ${comments}">  
-    <div class="card">
-  		<h5 class="card-header">Featured</h5>
-  		<div class="card-body">
-    		<p class="card-text" th:text="${comment.description}"></p>
-  		</div>
-	</div>
-</div>
--->
 										
 <div th:each="comment,iterState : ${report.comments}" th:unless="${iterState.index > 2}">
 	<div class="card">
@@ -114,23 +89,11 @@
 </div>
 
   </div>
-  <!--  SENZA AJAX PER MANDARE I COMMENTI è QUESTO -->
- <!--  <div class="card-footer">
-  
- 	<form action="#" th:action="@{/addComment/} + ${report.id}" method="get">
-<textarea  id="comments" name="comment" rows="3" cols="70">Write...</textarea>
-	<div>
-	<input type="submit" value="Comment" style="height: 25px;">
-	</div>
-	</form>			
-	</div>    -->
-	<!--  PROVA AJAXXX -->
-	
 	<div class="card-footer" >
 	<!--  -->
 	<form class="customerForm"   method="post">
 		<div class="form-group">
-			<textarea  class="description" id="description" name="description" rows="3" cols="70"></textarea>
+			<textarea  class="description" id="description" name="description" rows="3" cols="70" required></textarea>
 		</div>
 		<div class="form-group">
 			<textarea  class="id" id="id" name="id" rows="3" cols="70" th:text="${report.id}" style="display:none">id</textarea>
@@ -143,10 +106,9 @@
 			<input type="submit" value="Comment" style="height: 25px;">
 		</div>  
 	</form>
-	<!--  -->
      </div>
 	
-	<!-- FINE PROVA AJAXXX -->
+	
 <div class="card-footer" align="right" th:text="${'Autore: ' + report.author.name + ' ' + report.author.surname}">Footer</div>
 </div>
 
@@ -154,7 +116,6 @@
 
 </tr>
 
-<!--  </table> -->
 </div>
 </div>
 

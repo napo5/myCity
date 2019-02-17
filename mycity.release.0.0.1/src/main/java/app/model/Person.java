@@ -19,16 +19,16 @@ public class Person {
 	@Column(name = "ID")
 	private Long id;
 	
-	@Column(name = "NAME")
+	@Column(name = "NAME", columnDefinition ="VARCHAR(50)")
 	private String name = "";
 	
-	@Column(name = "SURNAME")
+	@Column(name = "SURNAME", columnDefinition ="VARCHAR(50)")
 	private String surname = "";
 	
-	@Column(name = "EMAIL")
+	@Column(name = "EMAIL", columnDefinition ="VARCHAR(50)")
 	private String email = "";
 	
-	@Column(name = "CITY")
+	@Column(name = "CITY" , columnDefinition ="VARCHAR(50)")
 	private String city = "";
 	
 	@Column(name = "COOKIE")

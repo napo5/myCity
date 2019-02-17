@@ -5,7 +5,6 @@
 
   <head>		
 
-<!-- prova --> 
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta charset="utf-8">
@@ -49,7 +48,6 @@ function myFunction() {
 
 <body>
 
-<!-- navbar navbar-default navbar-static-top  style="position:fixed;top: 0;width:100%;overflow: hidden;" -->
   <nav class="navbar navbar-default navbar-static-top" role="navigation" style="position:fixed;top: 0;width:100%;overflow: hidden;">
        
       <div class="container" style="flex-wrap: nowrap;">
@@ -75,13 +73,7 @@ function myFunction() {
                         <span th:class="'glyphicon  glyphicon-'+${glyph}" class="glyphicon glyphicon-home" aria-hidden="true"></span>
                         <span th:text="${text}">Template</span>
                       </a>
-                  </li>
-  <!--  
-                  <li th:replace="::menuItem ('/','home','home page','home','Home')">
-                      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                      <span>Home</span>
-                  </li>
- --> 
+                  </li> 
                   <li th:replace="::menuItem ('/peopleList','people','list of all the people','search','People')">
                       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                       <span>People</span>
@@ -91,17 +83,17 @@ function myFunction() {
                       <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                       <span>Reports</span>
                   </li>
-                  <!--  glyphicon glyphicon-pencil -->
+                  
                   <li th:replace="::menuItem ('/report','create report','create a new report','th-list','Create report')">
                       <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                       <span>Create report</span>
                   </li>
-  		<!-- glyphicon glyphicon-user -->
+  		
   				   <li th:replace="::menuItem ('/profile','profile','See your profile','th-list','Profile')">
                       <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
                       <span>Profile</span>
                   </li>
-  				<!-- glyphicon glyphicon-envelope -->
+  				
   					<li th:replace="::menuItem ('/messages','messages','See your messages','th-list','My messages')">
                       <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                       <span>Messages</span>
@@ -139,10 +131,8 @@ function myFunction() {
 <button type="button" class="addButton" id="btnAdd" style="position:relative;float:right;">AGGIUNGI</button>
 </div>
 </div>
-
-<!--   <script th:src="@{/webjars/jquery/jquery.min.js}"></script> --> 
+ 
   <script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
- <!--  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script> --> 
 <script src="/js/homeScreen.js"></script>
 <script>
 if('serviceWorker' in navigator) {

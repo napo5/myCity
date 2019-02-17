@@ -27,7 +27,7 @@ public class Report {
 	@GeneratedValue
 	@Column(name = "ID")
 	private Long id;
-	@Column(name = "TITLE")
+	@Column(name = "TITLE", columnDefinition ="VARCHAR(50)")
 	private String title;
 	@Column(name = "DESCRIPTION", columnDefinition ="VARCHAR(300)")
 	private String description;

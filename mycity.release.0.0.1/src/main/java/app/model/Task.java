@@ -27,13 +27,13 @@ public class Task {
 	@Column(name = "TITLE")
 	private String Title;
 	
-	@Column(name = "DESCRIPTION", columnDefinition ="VARCHAR(10000)")
+	@Column(name = "DESCRIPTION", columnDefinition ="VARCHAR(300)")
 	private String description;
 	
 	@Column(name = "POINTS", columnDefinition ="VARCHAR(10000)")
 	private int points;
 	
-	@Column(name = "EXP", columnDefinition ="VARCHAR(200)")
+	@Column(name = "EXP", columnDefinition ="VARCHAR(10000)")
 	private int exp;
 	
 	@Column(name = "STATE")

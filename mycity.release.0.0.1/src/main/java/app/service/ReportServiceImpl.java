@@ -63,6 +63,5 @@ public class ReportServiceImpl implements ReportService {
 	public Report getReportNoOpt(Long id) {
 		return reportRepository.getReportNoOpt(id);
 	}
-
 	
 }

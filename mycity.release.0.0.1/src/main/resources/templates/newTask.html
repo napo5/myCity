@@ -7,8 +7,8 @@
 <body>
 <h1>New Task</h1>
 <form action="#" th:action="@{/newTask/} + ${idReport}" th:object="${task}" method="post">
-<p>Title: <br><input type="text" th:field="*{title}" required title="Insert the task title!" /></p>
-<p>Description: <br><textarea th:field="*{description}" rows="3" cols="70" title="Insert the task description!" required></textarea></p>
+<p>Title: <br><input type="text" th:field="*{title}" required title="Insert the task title!" maxlength="50"/></p>
+<p>Description: <br><textarea th:field="*{description}" rows="3" cols="70" title="Insert the task description!" required maxlength="300"></textarea></p>
 <p>Points: <br><input type="number" th:field="*{points}" min="1" max="100" required title="Set the points for completing the task! (min:1 max:100)" oninput="(!validity.rangeOverflow||(value=100)) && (!validity.rangeUnderflow||(value=1)) &&
 (!validity.stepMismatch||(value=parseInt(this.value)));"/></p>
 <p>Experience: <br><input type="number" th:field="*{exp}" required title="Set the experience for completing the task! (min:1 max:100)" min="1" max="100" oninput="(!validity.rangeOverflow||(value=100)) && (!validity.rangeUnderflow||(value=1)) &&
