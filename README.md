@@ -10,6 +10,6 @@ myCity is a Spring Boot application built using Maven. You can build a jar file 
 ```sh
 git clone https://github.com/napo5/myCity.git
 cd myCity\mycity.release.0.0.1
-./mvnw package
+./mvn package
 java -jar target/*.jar
 ```
