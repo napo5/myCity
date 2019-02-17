@@ -69,8 +69,6 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login?error")
                 .permitAll()
                 .and()
-                .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-                .addFilter(new JWTAuthorizationFilter(authenticationManager()))
                 .logout().permitAll();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 

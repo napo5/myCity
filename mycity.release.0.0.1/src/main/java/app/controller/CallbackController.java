@@ -59,7 +59,6 @@ public class CallbackController {
         try {
             Tokens tokens = controller.handle(req);
             TokenAuthentication tokenAuth = new TokenAuthentication(JWT.decode(tokens.getIdToken()));
-//just for testing;
             if(personService.getPersonByEmail("diego@studiograficod2.it") == null) {
             Person diego = new Person("Diego","Bonura","diego@studiograficod2.it",Person.cityadmin);
             Person mirko = new Person("Mirko","Calvaresi","mirko.calvaresi@unicam.it",Person.cityadmin);

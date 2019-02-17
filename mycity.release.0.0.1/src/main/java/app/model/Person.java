@@ -203,34 +203,7 @@ public class Person {
 	public String toString() {
 		return this.name;
 	}
-
-	// napo
-
-	private String username;
-
-	private String password;
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Person( String username, String role ) {
-		this.role = role;
-		this.username = username;
-	}
-	 // napo end
+	
 	public void addPoints(int points) {
 		this.points += points;
 	}
