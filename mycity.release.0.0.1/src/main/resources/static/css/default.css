@@ -77,3 +77,15 @@ textarea {
 #firstTimeLogin{
 	margin-top:75px;
 }
+.navbar a.navbar-brand {
+  background: url("/resources/images/mycity.png") -1px -1px no-repeat;
+}
+.navbar a.navbar-brand span{
+  background: url("/resources/images/mycity.png") -1px -48px no-repeat;
+}
+
+@media (max-width: 768px) {
+  .navbar a.navbar-brand {
+    background: url("/resources/images/mobile.png") 0 center no-repeat;
+  }
+}
