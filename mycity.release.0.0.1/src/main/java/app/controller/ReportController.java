@@ -64,6 +64,7 @@ public class ReportController {
 		model.addAttribute("comments", commentService.findByReport(reportService.getReport(x).get()));
 		String cookie = CallbackController.getCookie(request);
 		Person person = personService.getPersonByCookie(cookie);
+		model.addAttribute("role", person.getRole());
 		if (report.getTask() != null &&  report.getTask().getWorker() == person) {model.addAttribute("isWorkerInCharge", true);
 		} else {
 			model.addAttribute("isWorkerInCharge", false);
