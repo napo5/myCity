@@ -12,5 +12,5 @@ git clone https://github.com/napo5/myCity.git
 cd myCity\mycity.release.0.0.1
 ./mvn package
 java -jar target/*.jar
-go to [local host](http://localhost:8080/)
 ```
+finally go to [local host](http://localhost:8080/)
