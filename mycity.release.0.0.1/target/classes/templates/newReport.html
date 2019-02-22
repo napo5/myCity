@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'create report')}" >
+<head>
+<title>Spring Boot: javabeginnerstutorial.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>New Report</h1>
+
+<form action="#" id="formReport" method="post">
+		Title: <br>
+		<input type="text" id="titoloReport" required pattern=".*\S+.*" title="Inserisci il titolo" maxlength="50"/> <br>
+		Image Direct URL: <font color="grey">(Carica la tua immagine </font><a th:href="@{http://it.tinypic.com}" th:target="_blank">QUI</a><font color="grey">)</font><br>
+		<input type="text" id="immagineReport" title="Lasciare vuoto se non si desidera inserire alcuna immagine!"/><br>
+		Description: <br>
+		<textarea id="descrizioneReport" required="required" name="description" rows="3" cols="70" title="Inserisci la descrizione" maxlength="50"></textarea><br>
+		<input type="submit" value="Submit"/> <input type="reset" value="Reset"/>
+	<div class="postResultDiv" id="resultDiv"></div>
+</form>
+
+</body>
+</html>

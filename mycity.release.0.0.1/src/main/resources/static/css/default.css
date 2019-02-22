@@ -1,0 +1,91 @@
+.navbar-nav {
+  	display: flex;
+  	flex-direction: row;
+  	padding-left: 0;
+  	margin-bottom: 0;
+  	list-style: none;
+  }
+.container:before{
+  content:none;
+}
+.btn{
+border-radius: 4px;
+}
+img{
+    max-width:600px;
+    max-height:300px;
+}​
+.card{
+	max-width:600px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+@media (max-width: 768px) {
+  .navbar-toggle {
+    position: absolute;
+    z-index: 9999;
+    right: 7%;
+    top: 0px;
+    left:auto;
+  }
+}
+
+@media (max-width: 768px){
+	#main-navbar{
+	 margin-right: 0;
+     margin-left: 0;
+	}
+}
+.nav.navbar-nav.navbar-right.responsive {
+flex-direction: column;
+margin-left:20px;
+}
+.image-responsive{
+	height: auto;
+	width: 100%;
+}
+
+textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    max-width:550px;
+}
+
+#lastcomment-list{
+	height:250px;
+	overflow:hidden; 
+	overflow-y:auto;
+}
+
+#homeScreenDiv{
+	background-color:grey;
+	height:60px;
+	padding-top:18px;
+	padding-right:35px;
+	padding-left:35px;
+	position:fixed;
+	top:auto;
+	bottom:0px;
+	right:auto;
+	left:auto;
+	display:none;
+}
+
+#firstTimeLogin{
+	margin-top:75px;
+}
+.navbar a.navbar-brand {
+  background: url("/resources/images/mycity.png") -1px -1px no-repeat;
+}
+.navbar a.navbar-brand span{
+  background: url("/resources/images/mycity.png") -1px -48px no-repeat;
+}
+
+@media (max-width: 768px) {
+  .navbar a.navbar-brand {
+    background: url("/resources/images/mobile.png") 0 center no-repeat;
+  }
+}

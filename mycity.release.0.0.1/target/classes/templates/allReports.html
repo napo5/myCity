@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout (~{::body},'reports')}">
+<head>
+<meta name="theme-color" content="#db5945"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <script src="/js/chooseWorker.js"></script>
+</head>
+<body>
+<div th:switch="${#lists.size(reports)}">
+<span th:case="'0'">
+<div class="alert alert-danger" role="alert">
+  NO REPORTS AVAILABLE!
+</div></span>
+<div th:case="*" id="result">
+<!-- questo  --> <div th:if="${role == 'cityAdmin'}"> 
+<h2>Report List (CITY ADMIN ONLY)</h2>
+<div style="overflow-x:auto;">
+
+<table class="table table-striped">
+<tr>
+<th>ID Report</th>
+<th>Title</th>
+<th>Description</th>
+<th>Author</th>
+<th>Task Title</th>
+<th>Data</th>
+<th>Task Available</th>
+<th>Apply List</th>
+</tr>
+
+<tr th:each="report : ${reports}">
+<td th:text="${report.id}"></td>
+<td th:text="${report.title}" style="max-width: 200px; overflow:hidden"></td>
+<td th:text="${report.description}" style="max-width: 200px; overflow:hidden"></td>
+<td th:text="${report.author.name + ' ' + report.author.surname}"></td>
+<td th:text="${report.task}"></td>
+<td th:text="${report.date}"></td>
+<td><span th:if="${report.task == null}"><a class="btn btn-default" th:href="@{/newTaskPage/} + ${report.id}">Create New Task</a></span>
+<span th:unless="${report.task == null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}">See the task</a></span></td>
+<td><span th:unless="${report.task == null}"><a class="btn btn-default" th:href="@{/chooseWorker/} + ${report.id}">Apply List</a></span></td>
+
+</tr>
+</table>
+</div>
+</div> <!-- questoo -->
+
+
+<!-- <table class="table table-bordered"> -->
+<h2>Report List</h2>
+<!-- width:30rem; -->
+<div class="card" id="card-special" style="display:none; width: 30rem;float:right;margin-top:0px;margin-left:25px;height:31rem;">  
+    <!-- <input type="text" th:value="${report.views}" class="field left" readonly> Visite -->
+	 	<div class="card-header" style="text-align: center; overflow:auto;">
+	 	<p>I tuoi commenti</p>
+	 	</div>
+	 	<div id="getResultDiv" style="padding:15px 10px 20px 10px">
+	        <ul class="list-group" id="lastcomment-list">
+	    	</ul>
+    	</div>  
+</div>
+
+<tr th:each="report : ${reports}">
+<div class="card">
+  <div class="card-header" >
+    <p style="display: inline-block;" th:text="${report.date}"></p>
+    <p style="display: inline-block; float:right;" th:text="${'Stato: ' + report.state}"></p>
+  </div>
+  <div class="card-body">
+  <span th:if="${report.image != ''}">
+  <img th:src="${report.image}" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
+   </span>
+   <span th:if="${report.image == ''}">
+   <img src="http://i64.tinypic.com/10z44g4.png" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
+   </span>
+   <br>
+  	<span th:if="${report.task != null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}" style="float:right;margin-left:10px">See Task</a></span>
+    <a class="btn btn-default" th:href="@{/seeReport/} + ${report.id}" style="float:right">Vai al Report</a>
+    <h2 class="card-title" th:text="${report.title}" >Special title treatment</h2>
+    <br>
+    <p class="card-text" th:text="${report.description}">With supporting text below as a natural lead-in to additional content.</p>
+										
+<div th:each="comment,iterState : ${report.comments}" th:unless="${iterState.index > 2}">
+	<div class="card">
+  		<h5 class="card-header" th:text="${report.author.name + ' ' + report.author.surname}">Autore del commento</h5>
+  		<div class="card-body">
+    		<p class="card-text" th:text="${comment.description}"></p>
+  		</div>
+	</div>	
+</div>
+
+  </div>
+	<div class="card-footer" >
+	<!--  -->
+	<form class="customerForm"   method="post">
+		<div class="form-group">
+			<textarea  class="description" id="description" name="description" rows="3" cols="70" required></textarea>
+		</div>
+		<div class="form-group">
+			<textarea  class="id" id="id" name="id" rows="3" cols="70" th:text="${report.id}" style="display:none">id</textarea>
+		</div>
+		
+		
+		<div class="postResultDiv" id="postResultDiv">
+		</div>
+		<div>
+			<input type="submit" value="Comment" style="height: 25px;">
+		</div>  
+	</form>
+     </div>
+	
+	
+<div class="card-footer" align="right" th:text="${'Autore: ' + report.author.name + ' ' + report.author.surname}">Footer</div>
+</div>
+
+
+
+</tr>
+
+</div>
+</div>
+
+</body>
+</html>
