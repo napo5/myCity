@@ -13,5 +13,5 @@ cd myCity\mycity.release.0.0.1
 mvn package
 java -jar target/<release_name>.jar
 ```
-The software is preconfigured to running on `http://localhost:8080/` but you can also specify ip and port in the console:
-for example `java -jar target/<release_name>.jar --server.port=8081 --sever.ip=0.0.0.0`
+The software is preconfigured to running on `http://localhost:8080/` but you can also specify ip and port in the console:  
+for example `java -jar target/<release_name>.jar --server.port=8081 --server.ip=0.0.0.0`
