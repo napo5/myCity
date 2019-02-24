@@ -45,6 +45,7 @@ public class Report {
 	public static final String inlavorazione = "in lavorazione";
 	public static final String inattesa = "in attesa";
 	public static final String inattesadicandidature = "in attesa di candidature";
+	public static final String risoltointernamente = "in lavorazione dal comune";
 	
 	@ManyToOne
 	@JoinColumn(name = "PERSON_ID")

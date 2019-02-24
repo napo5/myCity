@@ -23,6 +23,7 @@
    		<input type="submit" value="Candidati" title="Premi per candidarti al task di questo Report!" class="btn btn-default" th:if="${report.state == 'in attesa di candidature'}" style="margin-left:10px; float:right"/>
    		<span th:if="${isWorkerInCharge == true and report.state != 'chiuso'}"><a class="btn btn-default" th:href="@{/closeTask/} + ${report.id}" style="margin-left:10px; float:right">Close Task</a></span>
    		<span th:if="${role == 'cityAdmin' and report.state != 'chiuso'}"><a class="btn btn-default" th:href="@{/closeTask/} + ${report.id}" style="margin-left:10px; float:right">Close Report</a></span>
+   		<span th:if="${role == 'cityAdmin' and report.state != 'chiuso'}"><a class="btn btn-default" th:href="@{/solvedInternallyTask/} + ${report.id}" style="margin-left:10px; float:right">Risolto Internamente</a></span>
       	<span th:if="${report.task != null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}" style="float:right">See Task</a></span>
   <div id="divProva">
   </div>    	

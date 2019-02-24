@@ -2094,3 +2094,6 @@ insert into report (person_id, date, description, image, state, title, views, id
 2019-02-17 14:22:33 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Value too long for column "TITLE VARCHAR(5)": "'asdasdasdasd' (12)"; SQL statement:
 insert into report (person_id, date, description, image, state, title, views, id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-197]
+2019-02-21 19:31:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "TITLE VARCHAR(5)": "'asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas' (50)"; SQL statement:
+insert into report (person_id, date, description, image, state, title, views, id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-197]

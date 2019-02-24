@@ -38,7 +38,6 @@ import app.service.TaskService;
 @RequestMapping("/api")
 public class RestWebController {
 
-	List<AddCommentRequestBody> protoList = new ArrayList<AddCommentRequestBody>();
 	private final ReportService reportService;
 	private final CommentService commentService;
 	private final PersonService personService;
@@ -59,7 +58,6 @@ public class RestWebController {
 	//add a comment;
 	@PostMapping(value = "/addComment/{idReport}")
 	public Response addComment(@RequestBody AddCommentRequestBody requestBody,@PathVariable("idReport") String idReport,HttpServletRequest request) {
-		protoList.add(requestBody);
 		Long x = Long.valueOf(idReport);
 		Comment comment = new Comment(requestBody.getDescription());
 		String cookie = CallbackController.getCookie(request);
@@ -70,7 +68,7 @@ public class RestWebController {
 		commentService.createComment(comment);
 		target.addComment(comment);
 		reportService.createReport(target);
-		return new Response("Done", protoList);
+		return new Response("Done", requestBody);
 	}
 	//create a new report;
 	@PostMapping(value = "/createReport")
@@ -89,7 +87,7 @@ public class RestWebController {
 	}
 	//sends the candidature for a particular task;
 	@PostMapping(value = "/applyForTask/{idReport}")
-	public Response applyForTask(@RequestBody AddCommentRequestBody requestBody,@PathVariable("idReport") String idReport,HttpServletRequest request) {
+	public Response applyForTask(@PathVariable("idReport") String idReport,HttpServletRequest request) {
 		Long x = Long.valueOf(idReport);
 		Report target = reportService.getReport(x).get();
 		Task task = target.getTask();

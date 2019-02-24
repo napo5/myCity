@@ -97,4 +97,16 @@ public class ReportController {
 		return "redirect:/seeReport/" + idReport;
 	}
 	
+	//modify the report state when the report will be solved internally by the municipality 
+	@RequestMapping(value = "/solvedInternallyTask/{idReport}", method= RequestMethod.GET)
+	public String solvedInternallyTask(Model model, HttpServletRequest request,@PathVariable("idReport") String idReport) {
+		Long x = Long.valueOf(idReport);
+		if (reportService.getReportNoOpt(x).getTask() != null) {
+			return "redirect:/seeReport/" + idReport;
+		}
+		reportService.getReportNoOpt(x).setState(Report.risoltointernamente);
+		reportService.editReport(reportService.getReportNoOpt(x));
+		return "redirect:/seeReport/" + idReport;
+	}
+	
 }

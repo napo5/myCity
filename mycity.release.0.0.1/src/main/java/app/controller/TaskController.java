@@ -52,7 +52,7 @@ public class TaskController {
 	public String newTaskPage(@PathVariable("idReport") String idReport, Model model) {
 		Long x = Long.valueOf(idReport);
 		if (reportService.getReportNoOpt(x) != null) {
-			if (reportService.getReport(x).get().hasTask()) {
+			if (reportService.getReportNoOpt(x).hasTask()) {
 				return "Error! There is already a Task for this Report!";
 			}
 		} else return "Error! Report not found!";
