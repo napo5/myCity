@@ -70,7 +70,7 @@
   <img th:src="${report.image}" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
    </span>
    <span th:if="${report.image == ''}">
-   <img src="http://i64.tinypic.com/10z44g4.png" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
+   <img src="/resources/images/noImage.jpg" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
    </span>
    <br>
   	<span th:if="${report.task != null}"><a class="btn btn-default" th:href="@{/getTask/} + ${report.id}" style="float:right;margin-left:10px">See Task</a></span>
@@ -79,7 +79,7 @@
     <br>
     <p class="card-text" th:text="${report.description}">With supporting text below as a natural lead-in to additional content.</p>
 										
-<div th:each="comment,iterState : ${report.comments}" th:unless="${iterState.index > 2}">
+<div class="provaid" th:each="comment,iterState : ${report.comments}" th:unless="${iterState.index > 2}">
 	<div class="card">
   		<h5 class="card-header" th:text="${report.author.name + ' ' + report.author.surname}">Autore del commento</h5>
   		<div class="card-body">

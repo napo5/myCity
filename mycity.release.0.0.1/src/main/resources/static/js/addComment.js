@@ -32,7 +32,6 @@ $( document ).ready(function() {
 				console.log("ERROR: ", e);
 			}
 		});
-    	
     	resetData();
 
     }

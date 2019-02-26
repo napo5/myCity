@@ -17,7 +17,7 @@
   <img th:src="${report.image}" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
    </span>
    <span th:if="${report.image == ''}">
-   <img src="http://i64.tinypic.com/10z44g4.png" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
+   <img src="/resources/images/noImage.jpg" width="573px" height="300px" style="margin-bottom:20px" alt="No image found" class="image-responsive">
    </span>
    <br>
    		<input type="submit" value="Candidati" title="Premi per candidarti al task di questo Report!" class="btn btn-default" th:if="${report.state == 'in attesa di candidature'}" style="margin-left:10px; float:right"/>
